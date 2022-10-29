@@ -1,0 +1,124 @@
+{
+  "teacher": {
+    "name": "Nazilə Rəhimova",
+    "position": "Kafedra Müdiri",
+    "scientificDegree": "Texniki Elmlər Namizədi, Dosent",
+    "researchArea": "Data Mining, Ekspert Sistemleri, Süni İntellekt, Big Data",
+    "scientificWorks": [
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      },
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      },
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      }
+    ],
+    "education": [
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      }
+    ],
+    "achievements": [
+      {
+        "degree": "Bakalavr",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Magistr",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Aspirantura",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Doktorantura",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      }
+    ],
+    "skills": [
+      {
+        "label": "Programming",
+        "skill": [
+          "C/C++",
+          "Python",
+          "Java",
+          "Pascal",
+          "Delphi",
+          "Lisp",
+          "Visual Prolog",
+          "C#",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "PHP",
+          "Fortran"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "date": "1975-1981",
+        "position": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi"
+      },
+      {
+        "date": "29.12.1997",
+        "position": "Texniki Elmlər Namizədi - İnformasiya işlənməsi və idarəetmə sistemləri"
+      },
+      {
+        "date": "29.12.1997",
+        "position": "Dosent” elmi adı"
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Cisco Networking Academy",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=2%3A5"
+      },
+      {
+        "name": "Cisco Networking Academy",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=2%3A5"
+      }
+    ],
+    "contact": "nazila.rahimova@asoiu.edu.az"
+  }
+}
