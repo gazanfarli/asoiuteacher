@@ -32,8 +32,7 @@ const Projects = ({
             index === editListId.index && editListId.name === "projects" ? (
               <div key={item.name}>
                 <Name>
-                  <div style={{minWidth: '15rem'}}> 
-                  <span style={HeadingStyle}>Proyektin adı:</span></div>
+                  <span style={HeadingStyle}>Proyektin adı:</span>
                   <Input
                     name="name"
                     type="text"
