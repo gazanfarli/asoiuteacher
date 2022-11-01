@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { AiOutlinePlus } from 'react-icons/ai';
 
-const AddButton = ({ onclick, addClicked }) => {
+const AddButton = ({ onclick, style }) => {
   return (
-    <Container onClick={onclick}>
+    <Container onClick={() => onclick()} style={style}>
         <span>Əlavə et</span>
         <AiOutlinePlus color='#38547B' fontSize='1.5rem' />
     </Container>
@@ -25,4 +25,5 @@ const Container = styled.div`
     cursor: pointer;
     color: #8996A9;
     font-weight: 600;
+    ${props => props.style};
 `

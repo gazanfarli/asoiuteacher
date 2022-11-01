@@ -1,8 +1,8 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { HeadingStyle } from '../Helpers/HeadingStyle';
-import activeNavItem from '../Helpers/activeNavItem'
-import LogoutIcon from '../assets/icons/logout.png';
+import { HeadingStyle } from '../../Helpers/HeadingStyle';
+import activeNavItem from '../../Helpers/activeNavItem'
+import LogoutIcon from '../../assets/icons/logout.png';
 
 const Navbar = () => {
   const location = useLocation();

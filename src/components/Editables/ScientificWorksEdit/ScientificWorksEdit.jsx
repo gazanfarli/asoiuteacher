@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { HeadingStyle } from "../../Helpers/HeadingStyle";
+import { HeadingStyle } from "../../../Helpers/HeadingStyle";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import { FaRegTimesCircle } from "react-icons/fa";
-import countries from "../../api/countries";
-import { updateTeacherData } from '../../features/Teacher';
+import countries from "../../../api/countries";
+import { updateTeacherData } from '../../../features/Teacher';
 
 const ScientificWorksEdit = () => {
   const teacher = useSelector((state) => state.teacher.teacher);

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { HeadingStyle } from "../Helpers/HeadingStyle";
-import ScientificWorksEdit from "./Editables/ScientificWorksEdit";
+import { HeadingStyle } from "../../Helpers/HeadingStyle";
+import ScientificWorksEdit from "../Editables/ScientificWorksEdit/ScientificWorksEdit";
 
 const ScientificWorks = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);

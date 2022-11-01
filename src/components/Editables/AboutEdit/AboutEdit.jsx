@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import { HeadingStyle } from "../../Helpers/HeadingStyle";
+import { HeadingStyle } from "../../../Helpers/HeadingStyle";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit, FiCheckCircle } from 'react-icons/fi'
 import { FaRegTimesCircle } from 'react-icons/fa'
 import Skills from "./Skills";
-import AddButton from './AddButton';
+import AddButton from '../AddButton';
 import { useDispatch, useSelector } from "react-redux";
-import { updateTeacherData } from "../../features/Teacher";
+import { updateTeacherData } from "../../../features/Teacher";
 
 
 const AboutEdit = () => {

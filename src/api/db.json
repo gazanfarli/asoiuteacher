@@ -119,6 +119,37 @@
         "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=2%3A5"
       }
     ],
-    "contact": "nazila.rahimova@asoiu.edu.az"
+    "projects": [
+      {
+        "name": "Proyekt ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur. Recusandae architecto, iusto laborum incidunt vero odio, repellendus accusantium consequuntur sint suscipit voluptatem."
+      },
+      {
+        "name": "Proyekt ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur. Recusandae architecto, iusto laborum incidunt vero odio, repellendus accusantium consequuntur sint suscipit voluptatem."
+      }
+    ],
+    "inventions": [
+      {
+        "name": "İxtira ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur."
+      },
+      {
+        "name": "İxtira ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur."
+      }
+    ],
+    "patents": [
+      {
+        "name": "Patent ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa."
+      },
+      {
+        "name": "Patent ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa."
+      }
+    ],
+    "contact": "nazila.rahimova@asoiu.edu.az",
+    "profilePhoto": ""
   }
 }

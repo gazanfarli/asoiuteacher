@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import ProfileImg from "../assets/images/profile.jpg";
-import PersonEdit from "./Editables/PersonEdit";
+import ProfileImg from "../../assets/images/profile.jpg";
+import PersonEdit from "../Editables/PersonEdit/PersonEdit";
 
 const Person = ({ editMode, setEditMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);

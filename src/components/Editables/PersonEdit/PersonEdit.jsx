@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import styled from "styled-components";
-import ProfileImg from "../../assets/images/profile.jpg";
-import Input from "./Input";
+import ProfileImg from "../../../assets/images/profile.jpg";
+import Input from "../Input";
 import { MdOutlineModeEdit } from "react-icons/md";
-import EditIcon from './EditIcon';
+import EditIcon from '../EditIcon';
 import { useDispatch, useSelector } from "react-redux";
-import { updateTeacherData } from "../../features/Teacher";
+import { updateTeacherData } from "../../../features/Teacher";
 
 const PersonEdit = () => {
   const teacher = useSelector(state => state.teacher.teacher);
@@ -29,6 +29,7 @@ const PersonEdit = () => {
     
     fs.onload = () => {
       imgEdit.current.src = fs.result;
+      console.log(fs.result);
     };
   }
 

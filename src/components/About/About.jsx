@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { HeadingStyle } from "../Helpers/HeadingStyle";
-import listArrValues from "../Helpers/listArrValues";
-import AboutEdit from "./Editables/AboutEdit";
+import { HeadingStyle } from "../../Helpers/HeadingStyle";
+import listArrValues from "../../Helpers/listArrValues";
+import AboutEdit from "../Editables/AboutEdit/AboutEdit";
 
 const About = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);

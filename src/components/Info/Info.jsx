@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
-import About from "./About";
-import ScientificWorks from "./ScientificWorks";
-import Achievements from "./Achievements";
+import About from "../About/About";
+import ScientificWorks from "../ScientificWorks/ScientificWorks";
+import Achievements from "../Achievements/Achievements";
 import styled from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
 
