@@ -4,6 +4,7 @@ import ScientificWorks from "../ScientificWorks/ScientificWorks";
 import Achievements from "../Achievements/Achievements";
 import styled from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
+import { mobile } from "../../responsive";
 
 const Info = ({ editMode, setEditMode }) => {
 
@@ -42,6 +43,7 @@ const Container = styled.div`
   width: 66.666667%;
   min-height: 100vh;
   background-color: #f0f0fce3;
+  ${mobile({width: '100%', height: 'auto'})}
 `;
 
 const Wrapper = styled.div`

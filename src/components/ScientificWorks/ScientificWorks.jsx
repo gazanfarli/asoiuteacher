@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { HeadingStyle } from "../../Helpers/HeadingStyle";
+import { mobile } from "../../responsive";
 import ScientificWorksEdit from "../Editables/ScientificWorksEdit/ScientificWorksEdit";
 
 const ScientificWorks = ({ editMode }) => {
@@ -51,6 +52,7 @@ const Container = styled.div`
   padding: 30px;
   background-color: white;
   overflow-x: scroll;
+  ${mobile({padding: '1rem'})}
 `;
 
 const Table = styled.table`

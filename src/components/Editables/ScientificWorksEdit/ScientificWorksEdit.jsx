@@ -7,6 +7,7 @@ import { FiCheckCircle } from "react-icons/fi";
 import { FaRegTimesCircle } from "react-icons/fa";
 import countries from "../../../api/countries";
 import { updateTeacherData } from '../../../features/Teacher';
+import { mobile } from "../../../responsive";
 
 const ScientificWorksEdit = () => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -178,6 +179,7 @@ export default ScientificWorksEdit;
 const Container = styled.div`
   overflow-x: scroll;
   background-color: white;
+  ${mobile({padding: '1rem'})}
 `;
 
 const Table = styled.table`

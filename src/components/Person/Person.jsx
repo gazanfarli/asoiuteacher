@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import ProfileImg from "../../assets/images/profile.jpg";
+import { mobile } from "../../responsive";
 import PersonEdit from "../Editables/PersonEdit/PersonEdit";
 
 const Person = ({ editMode, setEditMode }) => {
@@ -53,6 +54,7 @@ const Container = styled.div`
   width: 33.33333%;
   height: 100vh;
   color: #fff;
+  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
 `;
 
 const Wrapper = styled.div`
@@ -64,6 +66,7 @@ const Wrapper = styled.div`
   background-color: rgb(56, 84, 123);
   padding: 2rem 3rem 1rem 3rem;
   overflow: auto;
+  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
 `;
 
 const ProfileImageContainer = styled.div`

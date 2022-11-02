@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { apiUrl } from "../api/apiUrl";
 import axios from "axios";
 import { getTeacher } from "../features/Teacher";
+import { mobile } from '../responsive';
 
 const Home = () => {
   const [editMode, setEditMode] = useState(false);
@@ -43,19 +44,5 @@ export default Home;
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  ${mobile({flexDirection: 'column'})}
 `;
-
-
-// "C/C++",
-//           "Python",
-//           "Java",
-//           "Pascal",
-//           "Delphi",
-//           "Lisp",
-//           "Visual Prolog",
-//           "C#",
-//           "HTML",
-//           "CSS",
-//           "JavaScript",
-//           "PHP",
-//           "Fortran"

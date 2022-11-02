@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HeadingStyle } from '../../Helpers/HeadingStyle';
 import activeNavItem from '../../Helpers/activeNavItem'
 import LogoutIcon from '../../assets/icons/logout.png';
+import { mobile, xs } from '../../responsive';
 
 const Navbar = () => {
   const location = useLocation();
@@ -32,7 +33,7 @@ const Navbar = () => {
         </NavList>
         <Exit>
           <Logout src={LogoutIcon} alt="logout" />
-          <span>Çıxış et</span>
+          <Span>Çıxış et</Span>
         </Exit>
       </Wrapper>
     </Container>
@@ -76,6 +77,8 @@ const NavItem = styled.li`
     border: 1px solid white;
   }
   transition: all 0.4s ease;
+  ${mobile({padding: '0.8rem 1.6rem'})};
+  ${xs({padding: '0.5rem 1.1rem', fontSize: '0.9rem'})}
 `;
 
 const Exit = styled.div`
@@ -93,4 +96,9 @@ const Logout = styled.img`
   width: 40px;
   height: 40px;
   margin-right: 0.5rem;
+  ${mobile({width: '2rem', height: '2rem'})}
 `;
+
+const Span = styled.span`
+  ${mobile({display: 'none'})}
+`

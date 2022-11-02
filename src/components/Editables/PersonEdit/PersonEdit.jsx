@@ -6,6 +6,7 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import EditIcon from '../EditIcon';
 import { useDispatch, useSelector } from "react-redux";
 import { updateTeacherData } from "../../../features/Teacher";
+import { mobile } from "../../../responsive";
 
 const PersonEdit = () => {
   const teacher = useSelector(state => state.teacher.teacher);
@@ -126,6 +127,7 @@ const Container = styled.div`
   width: 33.33333%;
   height: 100vh;
   color: #fff;
+  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
 `;
 
 const Wrapper = styled.div`
@@ -137,6 +139,7 @@ const Wrapper = styled.div`
   background-color: rgb(56, 84, 123);
   padding: 2rem 3rem 1rem 3rem;
   overflow: auto;
+  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
 `;
 
 const ProfileImageContainer = styled.div`

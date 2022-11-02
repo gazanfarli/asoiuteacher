@@ -8,6 +8,7 @@ import Skills from "./Skills";
 import AddButton from '../AddButton';
 import { useDispatch, useSelector } from "react-redux";
 import { updateTeacherData } from "../../../features/Teacher";
+import { mobile } from "../../../responsive";
 
 
 const AboutEdit = () => {
@@ -237,6 +238,7 @@ const Container = styled.div`
   background-color: #f0f0fce3;
   padding: 0 2.2rem 2.2rem 0;
   overflow: auto;
+  ${mobile({height: 'auto', padding: '0'})}
 `;
 
 const Education = styled.div`
@@ -270,11 +272,13 @@ const Row = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
+  ${mobile({alignItems: 'center'})}
 `;
 
 const Date = styled.span`
   flex: 1;
   line-height: 145%;
+  ${mobile({flex: '2', marginRight: '0.7rem'})}
 `;
 
 const Info = styled.span`

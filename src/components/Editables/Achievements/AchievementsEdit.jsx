@@ -12,6 +12,7 @@ import NewCertificate from "./NewCertificate";
 import Patents from "./Patents";
 import Inventions from './Inventions';
 import Projects from './Projects'
+import { mobile } from "../../../responsive";
 
 const AchievementsEdit = () => {
   const dispatch = useDispatch();
@@ -415,10 +416,12 @@ const Container = styled.div`
   padding: 2.2rem;
   background-color: white;
   overflow: auto;
+  ${mobile({padding: '1rem'})}
 `;
 
 const Table = styled.table`
   border-spacing: 5px;
+  ${mobile({overflow: 'auto', width: '100%'})}
 `;
 
 const Thead = styled.thead``;

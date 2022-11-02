@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import AchievementsEdit from "../Editables/Achievements/AchievementsEdit";
-import OtherAchievements from './Others'
+import OtherAchievements from './Others';
+import { mobile } from '../../responsive';
 
 const Achievements = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -78,10 +79,12 @@ const Container = styled.div`
   padding: 2.2rem;
   background-color: white;
   overflow: auto;
+  ${mobile({padding: '1rem'})}
 `;
 
 const Table = styled.table`
   border-spacing: 5px;
+  ${mobile({overflow: 'auto', width: '100%'})}
 `;
 
 const Thead = styled.thead``;

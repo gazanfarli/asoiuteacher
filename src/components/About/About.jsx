@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import listArrValues from "../../Helpers/listArrValues";
 import AboutEdit from "../Editables/AboutEdit/AboutEdit";
+import { mobile } from '../../responsive';
 
 const About = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -55,6 +56,7 @@ const Container = styled.div`
   background-color: white;
   padding: 2.2rem;
   overflow: auto;
+  ${mobile({height: 'auto', padding: '1.8rem'})}
 `;
 
 const Education = styled.div`
@@ -87,6 +89,7 @@ const Date = styled.span`
   flex: 1;
   line-height: 145%;
   color: black;
+  ${mobile({flex: '2', marginRight: '0.7rem'})}
 `;
 
 const Info = styled.span`
