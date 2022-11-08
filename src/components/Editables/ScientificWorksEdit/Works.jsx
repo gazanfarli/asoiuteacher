@@ -1,12 +1,10 @@
-import { useSelector } from "react-redux";
+import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
-import { HeadingStyle } from "../../Helpers/HeadingStyle";
-import { mobile } from "../../responsive";
-import ScientificWorksEdit from "../Editables/ScientificWorksEdit/ScientificWorksEdit";
+import { mobile } from "../../../responsive";
+import { HeadingStyle } from "../../../Helpers/HeadingStyle";
+import { Container } from "./ScientificWorksEdit";
 
-const ScientificWorks = ({ editMode }) => {
-  const teacher = useSelector((state) => state.teacher.teacher);
-
+const Works = ({ teacher, addClicked, addClickedHandler }) => {
   const columns = [
     "Elmi işin adı",
     "Kateqoriyası",
@@ -15,9 +13,8 @@ const ScientificWorks = ({ editMode }) => {
     "Link",
   ];
   return (
-    <>
-      {!editMode ? (
-        <Container>
+    <Container>
+      <div style={{width: '100%', overflow: 'auto'}}>
         <Table style={{ marginBottom: "2rem" }}>
           <Thead>
             <Tr>
@@ -29,35 +26,42 @@ const ScientificWorks = ({ editMode }) => {
           <Tbody>
             {teacher?.scientificWorks?.map((item, index) => (
               <Tr key={index}>
-                <Td style={{minWidth: '15rem'}}>{item.name}</Td>
+                <Td style={{ minWidth: "18rem" }}>{item.name}</Td>
                 <Td>{item.category}</Td>
                 <Td>{item.publishCountry}</Td>
                 <Td>{item.publishDate}</Td>
                 <Td>{item.link}</Td>
               </Tr>
             ))}
+            {addClicked && (
+              <Tr
+                onClick={addClickedHandler}
+                style={{ cursor: "pointer", height: "5rem" }}
+              >
+                <Td>Əlavə et</Td>
+                <Td></Td>
+                <Td></Td>
+                <Td>
+                  <AiOutlinePlus />
+                </Td>
+                <Td></Td>
+              </Tr>
+            )}
           </Tbody>
         </Table>
-      </Container>
-      ) : (
-        <ScientificWorksEdit />
-      )}
-    </>
+      </div>
+    </Container>
   );
 };
 
-export default ScientificWorks;
-
-const Container = styled.div`
-  padding: 30px;
-  background-color: white;
-  overflow: auto;
-  ${mobile({padding: '1rem' })};
-`;
+export default Works;
 
 const Table = styled.table`
   max-width: 100%;
   border-spacing: 5px;
+  margin: 30px;
+  ${mobile({ margin: "0" })}
+  overflow: auto;
 `;
 
 const Thead = styled.thead``;
@@ -65,17 +69,19 @@ const Thead = styled.thead``;
 const Th = styled.th`
   text-align: left;
   padding: 1rem;
-  background-color: #f4f5fc;
   ${HeadingStyle};
+  background-color: #f0f0fce3;
 `;
 
 const Tbody = styled.tbody`
   width: 66.666667%;
 `;
 
-const Tr = styled.tr``;
+const Tr = styled.tr`
+  background-color: #f0f0fce3;
+`;
 
 const Td = styled.td`
   padding: 1rem;
-  background-color: #f4f5fc;
+  background-color: #f0f0fce3;
 `;

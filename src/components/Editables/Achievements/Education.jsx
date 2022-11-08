@@ -1,7 +1,8 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { iconStyle, Tr, Td, Input } from "./AchievementsEdit";
+import { iconStyle, Tr, Td, Input, Table, Tbody, Th, Thead } from "./AchievementsEdit";
+import AddButton from "./AddButton";
 
 const Education = ({
   teacher,
@@ -12,11 +13,31 @@ const Education = ({
   categoryInput,
   setEditId,
   saveInfo,
-  deleteInfo
+  deleteInfo,
+  addClickHandler,
+  addAchClicked,
+  setAchAddClicked
 }) => {
+
+  const columns = [
+    "Elmi dərəcə",
+    "Universitet",
+    "İxtisas",
+    "Diplomun Kateqoriyası",
+  ];
+
   return (
-    <>
-      {teacher?.achievements?.map((item, index) =>
+    <Table style={{ marginBottom: "2rem", width: '100vw !important', overflow: 'auto' }}>
+        <Thead>
+          <Tr>
+            {columns.map((item, index) => (
+              <Th key={index}>{item}</Th>
+            ))}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {/* EDUCATION */}
+          {teacher?.achievements?.map((item, index) =>
         index === editListId.index && editListId.name === "achievements" ? (
           // WHEN EDIT ICON CLICKED  - ACHIEVEMENTS
           <Tr key={index}>
@@ -117,7 +138,16 @@ const Education = ({
           </Tr>
         )
       )}
-    </>
+            
+          {/* ADD BUTTON */}
+          <AddButton
+            section="education"
+            addClickHandler={addClickHandler}
+            addClicked={addAchClicked}
+            setAddClicked={setAchAddClicked}
+          />
+        </Tbody>
+      </Table>
   );
 };
 

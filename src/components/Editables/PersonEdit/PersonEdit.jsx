@@ -41,6 +41,7 @@ const PersonEdit = () => {
   return (
     <Container>
       <Wrapper>
+
         <ProfileImageContainer>
           <ProfileImage>
             <Img ref={imgEdit} src={ProfileImg} alt="profile_image" />
@@ -83,6 +84,8 @@ const PersonEdit = () => {
             <EditIcon style={{top: 'auto', bottom: 'auto', width: '1rem', height: '1rem'}} />
           </PersonInfo>
         </ProfileImageContainer>
+
+
         <InfoContainer>
           <Info>
             <Title>Elmi dərəcəsi</Title>
@@ -115,6 +118,7 @@ const PersonEdit = () => {
             />
           </Info>
         </InfoContainer>
+        
       </Wrapper>
     </Container>
   );

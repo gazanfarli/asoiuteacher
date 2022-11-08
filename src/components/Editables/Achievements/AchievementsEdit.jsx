@@ -5,14 +5,14 @@ import { HeadingStyle } from "../../../Helpers/HeadingStyle";
 import { useRef } from "react";
 import { updateTeacherData } from "../../../features/Teacher";
 import Education from "./Education";
-import AddButton from "./AddButton";
 import NewEducation from "./NewEducation";
 import Certificates from "./Certificates";
 import NewCertificate from "./NewCertificate";
 import Patents from "./Patents";
-import Inventions from './Inventions';
-import Projects from './Projects'
+import Inventions from "./Inventions";
+import Projects from "./Projects";
 import { mobile } from "../../../responsive";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 const AchievementsEdit = () => {
   const dispatch = useDispatch();
@@ -39,13 +39,13 @@ const AchievementsEdit = () => {
     about: "",
   });
   const [newInvention, setNewInvention] = useState({
-    name: '',
-    about: ''
+    name: "",
+    about: "",
   });
   const [newProject, setNewProject] = useState({
-    name: '',
-    about: ''
-  })
+    name: "",
+    about: "",
+  });
 
   // achievements input's refs
   const degreeInput = useRef(null);
@@ -64,6 +64,8 @@ const AchievementsEdit = () => {
   // projects input's refs
   const projectName = useRef(null);
   const projectAbout = useRef(null);
+  // CV input's refs
+  const cvRef = useRef(null);
 
   const addClickHandler = (set) => {
     set((prev) => !prev);
@@ -242,7 +244,7 @@ const AchievementsEdit = () => {
       about: "",
     });
   };
-  
+
   const emptyProState = () => {
     setNewProject({
       name: "",
@@ -250,46 +252,24 @@ const AchievementsEdit = () => {
     });
   };
 
-  const columns = [
-    "Elmi dərəcə",
-    "Universitet",
-    "İxtisas",
-    "Diplomun Kateqoriyası",
-  ];
-
   return (
     <Container>
       <Title>Diplom</Title>
-      <Table style={{ marginBottom: "2rem" }}>
-        <Thead>
-          <Tr>
-            {columns.map((item, index) => (
-              <Th key={index}>{item}</Th>
-            ))}
-          </Tr>
-        </Thead>
-        <Tbody>
-          {/* EDUCATION */}
-          <Education
-            teacher={teacher}
-            editListId={editListId}
-            degreeInput={degreeInput}
-            categoryInput={categoryInput}
-            specialtyInput={specialtyInput}
-            universityInput={universityInput}
-            setEditId={setEditId}
-            deleteInfo={deleteInfo}
-            saveInfo={saveInfo}
-          />
-          {/* ADD BUTTON */}
-          <AddButton
-            section="education"
-            addClickHandler={addClickHandler}
-            addClicked={addAchClicked}
-            setAddClicked={setAchAddClicked}
-          />
-        </Tbody>
-      </Table>
+      <Education
+        teacher={teacher}
+        editListId={editListId}
+        degreeInput={degreeInput}
+        categoryInput={categoryInput}
+        specialtyInput={specialtyInput}
+        universityInput={universityInput}
+        setEditId={setEditId}
+        deleteInfo={deleteInfo}
+        saveInfo={saveInfo}
+        addAchClicked={addAchClicked}
+        addClickHandler={addClickHandler}
+        setAchAddClicked={setAchAddClicked}
+      />
+
       {/* ADD NEW ACHIEVEMENT */}
       <NewEducation
         degreeInput={degreeInput}
@@ -307,32 +287,18 @@ const AchievementsEdit = () => {
       />
       {/* CERTIFICATES */}
       <Title>Sertifikat</Title>
-      <Table>
-        <Thead>
-          <Tr>
-            <Th style={{ minWidth: "12rem" }}>Sertifikatın adı</Th>
-            <Th>Sertifikatın linki</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Certificates
-            teacher={teacher}
-            certificateName={certificateName}
-            certificateLink={certificateLink}
-            deleteInfo={deleteInfo}
-            editListId={editListId}
-            saveInfo={saveInfo}
-            setEditId={setEditId}
-          />
-          {/* CERTIFICATES ADD BUTTON */}
-          <AddButton
-            section="certificates"
-            addClickHandler={addClickHandler}
-            addClicked={addCeClicked}
-            setAddClicked={setCeAddClicked}
-          />
-        </Tbody>
-      </Table>
+      <Certificates
+        teacher={teacher}
+        certificateName={certificateName}
+        certificateLink={certificateLink}
+        deleteInfo={deleteInfo}
+        editListId={editListId}
+        saveInfo={saveInfo}
+        setEditId={setEditId}
+        addCeClicked={addCeClicked}
+        addClickHandler={addClickHandler}
+        setCeAddClicked={setCeAddClicked}
+      />
       {/* ADD NEW CERTIFICATE */}
       <NewCertificate
         addCeClicked={addCeClicked}
@@ -406,6 +372,40 @@ const AchievementsEdit = () => {
         setNewPatent={setNewPatent}
         teacher={teacher}
       />
+
+      <Title>CV</Title>
+      <CVContainer>
+        <IoDocumentTextOutline
+          style={{
+            fontSize: "2rem",
+            WebkitTextStroke: "5px #38547B",
+            marginRight: "0.5rem",
+          }}
+        />
+        <div>
+          <Label htmlFor="cv_input">
+            <InputFile
+              id="cv_input"
+              name="cv_input"
+              type="file"
+              accept="pdf doc docx"
+            />
+            <span style={{ cursor: "pointer", fontWeight: "600" }}>
+              CV əlavə edin
+            </span>
+          </Label>
+          <span
+            style={{
+              fontStyle: "italic",
+              fontSize: "0.8rem",
+              fontWeight: "500",
+            }}
+          >
+            Fayl .pdf və ya .doc formatında olmalıdır.
+          </span>
+        </div>
+      </CVContainer>
+      <File type="file" accept="pdf doc docx" ref={cvRef} alt="profile_image" />
     </Container>
   );
 };
@@ -416,17 +416,19 @@ const Container = styled.div`
   padding: 2.2rem;
   background-color: white;
   overflow: auto;
-  ${mobile({padding: '1rem'})}
+  ${mobile({ padding: "1rem" })}
 `;
 
-const Table = styled.table`
+export const Table = styled.table`
   border-spacing: 5px;
-  ${mobile({overflow: 'auto', width: '100%'})}
+  max-width: 100vw;
+  overflow: auto;
+  ${mobile({ overflow: "auto", width: "100%" })}
 `;
 
-const Thead = styled.thead``;
+export const Thead = styled.thead``;
 
-const Th = styled.th`
+export const Th = styled.th`
   width: 15%;
   text-align: left;
   padding: 1rem;
@@ -434,7 +436,7 @@ const Th = styled.th`
   ${HeadingStyle};
 `;
 
-const Tbody = styled.tbody``;
+export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr``;
 
@@ -493,3 +495,19 @@ export const About = styled.div`
   border-radius: 8px;
   margin-bottom: 2rem;
 `;
+
+const CVContainer = styled.div`
+  display: flex;
+  color: #38547b;
+  padding: 1rem;
+`;
+
+const Label = styled.label`
+  display: flex;
+`;
+
+const InputFile = styled.input`
+  display: none;
+`;
+
+const File = styled.input``;

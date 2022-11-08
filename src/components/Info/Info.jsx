@@ -29,7 +29,7 @@ const Info = ({ editMode, setEditMode }) => {
             <CancelButton onClick={() => {
               setEditMode((prev) => (prev = false));
               onClickHandler();
-              }}><Link to='/' style={{color: 'white', textDecoration: 'none'}}>Ləğv et</Link></CancelButton>
+              }}><Link to='/' style={{color: 'white', textDecoration: 'none', width: '100%'}}>Ləğv et</Link></CancelButton>
           </ButtonContainer>
         )}
       </Wrapper>
@@ -68,6 +68,7 @@ const buttonStyle = {
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  ${mobile({display: 'flex', justifyContent: 'space-between', padding: '0 1.5rem'})}
 `;
 
 const SaveButton = styled.button`
@@ -75,13 +76,14 @@ const SaveButton = styled.button`
   ${buttonStyle};
   &:hover {
     opacity: 0.9;
-  }
+  };
 `;
 
 const CancelButton = styled.button`
+width: 100%;
   background-color: #ff0000;
   ${buttonStyle}
   &:hover {
     opacity: 0.9;
-  } ;
+  };
 `;

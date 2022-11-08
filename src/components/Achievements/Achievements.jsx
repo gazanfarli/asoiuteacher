@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import AchievementsEdit from "../Editables/Achievements/AchievementsEdit";
-import OtherAchievements from './Others';
-import { mobile } from '../../responsive';
+import OtherAchievements from "./Others";
+import { mobile } from "../../responsive";
+import { BsPrinter } from "react-icons/bs";
 
 const Achievements = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -57,14 +58,22 @@ const Achievements = ({ editMode }) => {
           </Table>
 
           <Title>Proyekt</Title>
-          <OtherAchievements name='projects' teacher={teacher} />
+          <OtherAchievements name="projects" teacher={teacher} />
 
           <Title>İxtira</Title>
-          <OtherAchievements name='inventions' teacher={teacher} />
+          <OtherAchievements name="inventions" teacher={teacher} />
 
           <Title>Patent</Title>
-          <OtherAchievements name='patents' teacher={teacher} />
-          
+          <OtherAchievements name="patents" teacher={teacher} />
+
+          <Title>CV</Title>
+          <a href="./" download style={{textDecoration: 'none'}}>
+            <CVContainer style={{ cursor: "pointer" }}>
+              <BsPrinter style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
+              <span>CV çap edin</span>
+            </CVContainer>
+          </a>
+
         </Container>
       ) : (
         <AchievementsEdit />
@@ -76,15 +85,16 @@ const Achievements = ({ editMode }) => {
 export default Achievements;
 
 const Container = styled.div`
+  max-width: 100vw;
+  overflow: auto;
   padding: 2.2rem;
   background-color: white;
-  overflow: auto;
-  ${mobile({padding: '1rem'})}
+  ${mobile({ padding: "1rem" })}
 `;
 
 const Table = styled.table`
   border-spacing: 5px;
-  ${mobile({overflow: 'auto', width: '100%'})}
+  ${mobile({ overflow: "auto", width: "100%" })}
 `;
 
 const Thead = styled.thead``;
@@ -111,4 +121,12 @@ const Title = styled.div`
   font-size: 1.3rem;
   padding: 2.2rem 0 1rem 1rem;
   background-color: white;
+`;
+
+const CVContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  color: #38547b;
+  font-weight: 700;
 `;

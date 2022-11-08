@@ -1,22 +1,20 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { HeadingStyle } from "../../../Helpers/HeadingStyle";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { FiEdit, FiCheckCircle } from 'react-icons/fi'
-import { FaRegTimesCircle } from 'react-icons/fa'
-import Skills from "./Skills";
-import AddButton from '../AddButton';
 import { useDispatch, useSelector } from "react-redux";
-import { updateTeacherData } from "../../../features/Teacher";
+import { updateSkills, updateTeacherData } from "../../../features/Teacher";
 import { mobile } from "../../../responsive";
-
+import Education from "./Education";
+import Experience from "./Experience";
+import Skills from './Skills';
 
 const AboutEdit = () => {
-  const teacher = useSelector(state => state.teacher.teacher);
-  const [tags, setTags] = useState(teacher?.skills[0]?.skill);
-  const [editListId, setEditListId] = useState({index: null, name: ''});
+  const teacher = useSelector((state) => state.teacher.teacher);
+  const [editListId, setEditListId] = useState({ index: null, name: "" });
   const [addClickedEd, setAddClickedEd] = useState(true);
   const [addClickedEx, setAddClickedEx] = useState(true);
+  const [addClickedSk, setAddClickedSk] = useState(true);
+  const [newSkill, setNewSkill] = useState("");
 
   const dispatch = useDispatch();
   const edDate = useRef(null);
@@ -24,209 +22,143 @@ const AboutEdit = () => {
   const specialty = useRef(null);
   const position = useRef(null);
 
-  const deleteInfo = (id, name) => {
-    let data = teacher && teacher[name];
-    data = data.filter((item, index) => index !== id);
-    dispatch(updateTeacherData({data: data, type: name}));
-  }
-
   const addClickedEdHandler = () => {
-    setAddClickedEd(prev => !prev);
-  }
+    setAddClickedEd((prev) => !prev);
+  };
   const addClickedExHandler = () => {
-    setAddClickedEx(prev => !prev);
-  }
+    setAddClickedEx((prev) => !prev);
+  };
+  const addClickedSkHandler = () => {
+    setAddClickedSk((prev) => !prev);
+  };
 
   const saveInfo = (id, name) => {
     let data = teacher && [...teacher[name]];
-    if (name === 'education') {
-      data[id] = {...data[id], date: edDate.current.value, specialty: specialty.current.value};
-    } else if (name === 'experience') {
-      data[id] = {...data[id], date: exDate.current.value, position: position.current.value};
+    if (name === "education") {
+      data[id] = {
+        ...data[id],
+        date: edDate.current.value,
+        specialty: specialty.current.value,
+      };
+    } else if (name === "experience") {
+      data[id] = {
+        ...data[id],
+        date: exDate.current.value,
+        position: position.current.value,
+      };
     }
-    
-    dispatch(updateTeacherData({data: data, type: name}));
+
+    dispatch(updateTeacherData({ data: data, type: name }));
     setEditId(null);
-  }
+  };
 
   const addInfo = (name) => {
     let data = teacher && [...teacher[name]];
-    if (name === 'education') {
-
-      if(edDate.current.value.length === 0 || specialty.current.value.length === 0) {
-        alert('Məlumatları tam daxil edin');
+    if (name === "education") {
+      if (
+        edDate.current.value.length === 0 ||
+        specialty.current.value.length === 0
+      ) {
+        alert("Məlumatları tam daxil edin");
         return 0;
-      } else { data.push({date: edDate.current.value, specialty: specialty.current.value}) }
-
-    } else if (name === 'experience') {
-      
-      if(exDate.current.value.length === 0 || position.current.value.length === 0) {
-        alert('Məlumatları tam daxil edin');
+      } else {
+        data.push({
+          date: edDate.current.value,
+          specialty: specialty.current.value,
+        });
+      }
+    } else if (name === "experience") {
+      if (
+        exDate.current.value.length === 0 ||
+        position.current.value.length === 0
+      ) {
+        alert("Məlumatları tam daxil edin");
         return 0;
-      } else { data.push({date: exDate.current.value, position: position.current.value}) }
-
+      } else {
+        data.push({
+          date: exDate.current.value,
+          position: position.current.value,
+        });
+      }
     }
-    
-    dispatch(updateTeacherData({data: data, type: name}));
-  }
-  
+
+    dispatch(updateTeacherData({ data: data, type: name }));
+  };
+
+  const addSkill = (skillsId) => {
+    let data = teacher?.skills[skillsId];
+    data = JSON.parse(JSON.stringify(data));
+    if (!data.skill.includes(newSkill) && newSkill.length > 0) {
+      data.skill.push(newSkill);
+    } else addClickedSkHandler();
+
+    dispatch(updateSkills({ id: skillsId, data: data }));
+  };
+
+  const deleteInfo = (id, name) => {
+    let data = teacher && teacher[name];
+    data = data.filter((item, index) => index !== id);
+    dispatch(updateTeacherData({ data: data, type: name }));
+  };
+
+  const deleteSkill = (skillsId, id) => {
+    let data = teacher?.skills[skillsId];
+    let newSkill = data.skill.filter((item, index) => index !== id);
+    const newData = { ...data, skill: newSkill };
+
+    dispatch(updateSkills({ id: skillsId, data: newData }));
+  };
 
   const setEditId = (index, name) => {
-    setEditListId({index: index, name: name});
-  }
+    setEditListId({ index: index, name: name });
+  };
 
-  const iconStyle = {
-    margin: 'auto auto auto 0.5rem', 
-    color: '#1b3b67', 
-    width: '1.4rem',
-    height: '1.4rem', 
-    cursor: 'pointer',
-  }
- 
   return (
     <Container>
-      <Education>
-      <Title>Təhsil</Title>
-        {teacher?.education?.map((item, index) =>
-          index === editListId.index && editListId.name === 'education' ? (
-            <Row key={index}>
-              <Input
-                name="date"
-                type="text"
-                defaultValue={item.date}
-                ref={edDate}
-                style={{ width: "15%", marginRight: "1rem" }}
-              />
-              <Input
-                name="specialty"
-                type="text"
-                defaultValue={item.specialty}
-                ref={specialty}
-                style={{ width: "85%" }}
-              />
-              <FaRegTimesCircle 
-              onClick={() => setEditId(null)} 
-              style={ iconStyle } />
-              <FiCheckCircle style={iconStyle}
-              onClick={() => saveInfo(index, 'education')} />
-            </Row>
-          ) : (
-            <Row key={index}>
-              <Date>{item.date}</Date>
-              <Info>{item.specialty}</Info>
-              <FiEdit 
-              onClick={() => setEditId(index, 'education')} 
-              style={{width: '1.2rem',height: '1.2rem', color: 'blue', cursor: 'pointer'}} />
-              <RiDeleteBin6Line
-              onClick={() => deleteInfo(index, 'education')} 
-              style={{ width: '1.2rem',height: '1.2rem', marginLeft: '0.5rem', color: 'red', cursor: 'pointer'}} />
-            </Row>
-          )
-        )}
-        {addClickedEd ?
-          <AddButton onclick={addClickedEdHandler} /> 
-          : (
-            <Row>
-              <Input
-                name="dateAdd"
-                type="text"
-                placeholder="Tarix"
-                ref={edDate}
-                style={{ width: "15%", marginRight: "1rem" }}
-              />
-              <Input
-                name="specialtyAdd"
-                type="text"
-                placeholder="Universitet və ixtisas"
-                ref={specialty}
-                style={{ width: "85%" }}
-              />
-              <FaRegTimesCircle 
-              onClick={addClickedEdHandler} 
-              style={ iconStyle } />
-              <FiCheckCircle style={iconStyle}
-              onClick={() => {addInfo('education')}} />
-            </Row>
-          )
-        }
-        
-      </Education>
+      <EducationContainer>
+        <Title>Təhsil</Title>
+        <Education
+          addClickedEd={addClickedEd}
+          addClickedEdHandler={addClickedEdHandler}
+          addInfo={addInfo}
+          deleteInfo={deleteInfo}
+          edDate={edDate}
+          editListId={editListId}
+          saveInfo={saveInfo}
+          setEditId={setEditId}
+          specialty={specialty}
+          teacher={teacher}
+        />
+      </EducationContainer>
 
       <SkillsContainer>
         <Title>İxtisas üzrə bacarıqlar</Title>
-        {teacher?.skills.map((item, index) => (
-          <div key={index} style={{ display: "flex" }}>
-            <h3 style={{ padding: "0 2rem 0 1rem", background: 'white' }}>{item.label}:</h3>
-            <Skills tags={tags} setTags={setTags} style={{padding: '0 1rem 1rem 0'}} />
-          </div>
-        ))}
+        <Skills
+          addClickedSk={addClickedSk}
+          addClickedSkHandler={addClickedSkHandler}
+          addSkill={addSkill}
+          deleteSkill={deleteSkill}
+          newSkill={newSkill}
+          setNewSkill={setNewSkill}
+          teacher={teacher}
+        />
       </SkillsContainer>
 
-      <Experience>
+      <ExperienceContainer>
         <Title>İş təcrübəsi</Title>
-        {teacher?.experience?.map((item, index) =>
-          index === editListId.index && editListId.name === 'experience' ? (
-            <Row key={index}>
-              <Input
-                name="date"
-                type="text"
-                defaultValue={item.date}
-                ref={exDate}
-                style={{ width: "15%", marginRight: "1rem" }}
-              />
-              <Input
-                name="position"
-                type="text"
-                defaultValue={item.position}
-                ref={position}
-                style={{ width: "85%" }}
-              />
-              <FaRegTimesCircle 
-              onClick={() => setEditId(null)} 
-              style={ iconStyle } />
-              <FiCheckCircle style={iconStyle}
-              onClick={() => saveInfo(index, 'experience')} />
-            </Row>
-          ) : (
-            <Row key={index}>
-              <Date>{item.date}</Date>
-              <Info>{item.position}</Info>
-              <FiEdit 
-              onClick={() => setEditId(index, 'experience')} 
-              style={{width: '1.2rem',height: '1.2rem', color: 'blue', cursor: 'pointer'}} />
-              <RiDeleteBin6Line
-              onClick={() => deleteInfo(index, 'experience')} 
-              style={{width: '1.2rem',height: '1.2rem', marginLeft: '0.5rem', color: 'red', cursor: 'pointer'}} />
-            </Row>
-          )
-        )}
-        {addClickedEx ?
-          <AddButton onclick={addClickedExHandler} /> 
-          : (
-            <Row>
-              <Input
-                name="dateAdd"
-                type="text"
-                placeholder="Tarix"
-                ref={exDate}
-                style={{ width: "15%", marginRight: "1rem" }}
-              />
-              <Input
-                name="specialtyAdd"
-                type="text"
-                placeholder="Vəzifə"
-                ref={position}
-                style={{ width: "85%" }}
-              />
-              <FaRegTimesCircle 
-              onClick={addClickedExHandler} 
-              style={ iconStyle } />
-              <FiCheckCircle style={iconStyle}
-              onClick={() => {addClickedExHandler(); addInfo('experience')}} />
-            </Row>
-          )
-        }
-      </Experience>
+        <Experience
+          addClickedEx={addClickedEx}
+          addClickedExHandler={addClickedExHandler}
+          addInfo={addInfo}
+          deleteInfo={deleteInfo}
+          editListId={editListId}
+          exDate={exDate}
+          position={position}
+          saveInfo={saveInfo}
+          setEditId={setEditId}
+          teacher={teacher}
+        />
+      </ExperienceContainer>
     </Container>
   );
 };
@@ -238,15 +170,16 @@ const Container = styled.div`
   background-color: #f0f0fce3;
   padding: 0 2.2rem 2.2rem 0;
   overflow: auto;
-  ${mobile({height: 'auto', padding: '0'})}
+  ${mobile({ height: "auto", padding: "0" })}
 `;
 
-const Education = styled.div`
+const EducationContainer = styled.div`
   padding-bottom: 2rem;
   background-color: #f0f0fce3;
 `;
 
 const SkillsContainer = styled.div`
+  width: 100%;
   padding: 2rem 0 2rem 0;
   border-top: 2px solid rgb(238, 238, 238);
   border-bottom: 2px solid rgb(238, 238, 238);
@@ -255,7 +188,9 @@ const SkillsContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Experience = styled.div`
+
+
+const ExperienceContainer = styled.div`
   padding-top: 2rem;
 `;
 
@@ -265,28 +200,28 @@ const Title = styled.div`
   background-color: white;
 `;
 
-const Row = styled.div`
+export const Row = styled.div`
   position: relative;
   background-color: white;
   display: flex;
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
-  ${mobile({alignItems: 'center'})}
+  ${mobile({ alignItems: "center" })}
 `;
 
-const Date = styled.span`
+export const Date = styled.span`
   flex: 1;
   line-height: 145%;
-  ${mobile({flex: '2', marginRight: '0.7rem'})}
+  ${mobile({ flex: "2", marginRight: "0.7rem" })}
 `;
 
-const Info = styled.span`
+export const Info = styled.span`
   flex: 6;
   line-height: 145%;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: "flex";
   font-size: "1rem";
   padding: 5px 10px;
@@ -297,3 +232,11 @@ const Input = styled.input`
     outline: none;
   }
 `;
+
+export const iconStyle = {
+  margin: "auto auto auto 0.5rem",
+  color: "#1b3b67",
+  width: "1.4rem",
+  height: "1.4rem",
+  cursor: "pointer",
+};
