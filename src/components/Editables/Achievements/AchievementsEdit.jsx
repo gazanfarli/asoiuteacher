@@ -12,7 +12,7 @@ import Patents from "./Patents";
 import Inventions from "./Inventions";
 import Projects from "./Projects";
 import { mobile } from "../../../responsive";
-import { IoDocumentTextOutline } from "react-icons/io5";
+import CV from "./CV";
 
 const AchievementsEdit = () => {
   const dispatch = useDispatch();
@@ -64,8 +64,6 @@ const AchievementsEdit = () => {
   // projects input's refs
   const projectName = useRef(null);
   const projectAbout = useRef(null);
-  // CV input's refs
-  const cvRef = useRef(null);
 
   const addClickHandler = (set) => {
     set((prev) => !prev);
@@ -98,7 +96,7 @@ const AchievementsEdit = () => {
       }
     }
 
-    if (name === "certificates") {
+    else if (name === "certificates") {
       if (
         certificateName.current.value.length === 0 ||
         certificateLink.current.value.length === 0
@@ -114,7 +112,7 @@ const AchievementsEdit = () => {
       }
     }
 
-    if (name === "patents") {
+    else if (name === "patents") {
       if (
         patentName.current.value.length === 0 ||
         patentAbout.current.value.length === 0
@@ -130,7 +128,7 @@ const AchievementsEdit = () => {
       }
     }
 
-    if (name === "inventions") {
+    else if (name === "inventions") {
       if (
         inventiontName.current.value.length === 0 ||
         inventionAbout.current.value.length === 0
@@ -146,7 +144,7 @@ const AchievementsEdit = () => {
       }
     }
 
-    if (name === "projects") {
+    else if (name === "projects") {
       if (
         projectName.current.value.length === 0 ||
         projectAbout.current.value.length === 0
@@ -374,38 +372,7 @@ const AchievementsEdit = () => {
       />
 
       <Title>CV</Title>
-      <CVContainer>
-        <IoDocumentTextOutline
-          style={{
-            fontSize: "2rem",
-            WebkitTextStroke: "5px #38547B",
-            marginRight: "0.5rem",
-          }}
-        />
-        <div>
-          <Label htmlFor="cv_input">
-            <InputFile
-              id="cv_input"
-              name="cv_input"
-              type="file"
-              accept="pdf doc docx"
-            />
-            <span style={{ cursor: "pointer", fontWeight: "600" }}>
-              CV əlavə edin
-            </span>
-          </Label>
-          <span
-            style={{
-              fontStyle: "italic",
-              fontSize: "0.8rem",
-              fontWeight: "500",
-            }}
-          >
-            Fayl .pdf və ya .doc formatında olmalıdır.
-          </span>
-        </div>
-      </CVContainer>
-      <File type="file" accept="pdf doc docx" ref={cvRef} alt="profile_image" />
+      <CV />
     </Container>
   );
 };
@@ -495,19 +462,3 @@ export const About = styled.div`
   border-radius: 8px;
   margin-bottom: 2rem;
 `;
-
-const CVContainer = styled.div`
-  display: flex;
-  color: #38547b;
-  padding: 1rem;
-`;
-
-const Label = styled.label`
-  display: flex;
-`;
-
-const InputFile = styled.input`
-  display: none;
-`;
-
-const File = styled.input``;

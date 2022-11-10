@@ -10,7 +10,8 @@ import teacherReducer from './features/Teacher';
 const store = configureStore({
   reducer: {
     teacher: teacherReducer
-  }
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 })
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -4,7 +4,7 @@ import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import AchievementsEdit from "../Editables/Achievements/AchievementsEdit";
 import OtherAchievements from "./Others";
 import { mobile } from "../../responsive";
-import { BsPrinter } from "react-icons/bs";
+import CV from './CV';
 
 const Achievements = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -67,12 +67,7 @@ const Achievements = ({ editMode }) => {
           <OtherAchievements name="patents" teacher={teacher} />
 
           <Title>CV</Title>
-          <a href="./" download style={{textDecoration: 'none'}}>
-            <CVContainer style={{ cursor: "pointer" }}>
-              <BsPrinter style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
-              <span>CV çap edin</span>
-            </CVContainer>
-          </a>
+          <CV teacher={teacher} />
 
         </Container>
       ) : (
@@ -123,10 +118,3 @@ const Title = styled.div`
   background-color: white;
 `;
 
-const CVContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  color: #38547b;
-  font-weight: 700;
-`;

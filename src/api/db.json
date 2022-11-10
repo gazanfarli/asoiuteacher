@@ -151,6 +151,7 @@
       }
     ],
     "contact": "nazila.rahimova@asoiu.edu.az",
-    "profilePhoto": ""
+    "profilePhoto": "",
+    "cvEndpoint": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   }
 }
