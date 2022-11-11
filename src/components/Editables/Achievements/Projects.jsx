@@ -196,6 +196,55 @@ const Projects = ({
             <div style={HeadingStyle}>Proyekt haqqında məlumat</div>
             <br />
           </About>
+          {/* PROJECT ADD CLICKED */}
+          {addProClicked ? (
+            <AddButtonContainer
+              onClick={() => addClickHandler(setAddProClicked)}
+            >
+              <span>Əlavə et</span>
+              <AiOutlinePlus color="#38547B" fontSize="1.5rem" />
+            </AddButtonContainer>
+          ) : (
+            <Row>
+              <Input
+                name="name"
+                type="text"
+                value={newProject.name}
+                ref={projectName}
+                placeholder="Proyektin adı"
+                onChange={(e) => handleChange(e, newProject, setNewProject)}
+                style={{ width: "30%", marginRight: "1rem" }}
+              />
+              <Input
+                name="about"
+                type="text"
+                value={newProject.about}
+                ref={projectAbout}
+                placeholder="Proyekt haqqında"
+                onChange={(e) => handleChange(e, newProject, setNewProject)}
+                style={{ width: "70%", height: "5rem" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <FaRegTimesCircle
+                  onClick={() => {
+                    addClickHandler(setAddProClicked);
+                    emptyProState();
+                  }}
+                  style={iconStyle}
+                />
+                <FiCheckCircle
+                  onClick={() => saveNew("projects")}
+                  style={iconStyle}
+                />
+              </div>
+            </Row>
+          )}
         </div>
       )}
     </>

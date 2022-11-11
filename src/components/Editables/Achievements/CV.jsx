@@ -1,11 +1,22 @@
 import styled from "styled-components";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { storage } from "../../../firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { v4 } from "uuid";
+import { updateTeacherData } from "../../../features/Teacher";
 
 const CV = () => {
-  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile, setSelectedFile] = useState(null);
   const [isFilePicked, setIsFilePicked] = useState(false);
+  const teacher = useSelector((state) => state.teacher.teacher);
+  const dispatch = useDispatch();
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -13,24 +24,30 @@ const CV = () => {
   };
 
   const saveCV = () => {
-    const url = "http://localhost:3000/uploadFile";
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("fileName", selectedFile?.name);
-    console.log(formData);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    // axios
-    //   .post(url, formData, config)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+    if (selectedFile == null) return;
+    const id = v4();
+    const cvRef = ref(storage, `files/${selectedFile.name + id}`);
+    // IF CV EXISTS THEN DELETE OLD
+    if (teacher?.cvEndpoint?.name?.length > 0) {
+      const deleteRef = ref(storage, `files/${teacher?.cvEndpoint?.name}`);
+
+      // Delete the file
+      deleteObject(deleteRef)
+        .then(() => console.log("Köhnə CV silindi"))
+        .catch((error) => console.error(error));
+    }
+
+    uploadBytes(cvRef, selectedFile).then(() => {
+      getDownloadURL(cvRef).then((url) => {
+        dispatch(
+          updateTeacherData({
+            data: { name: selectedFile.name + id, download: url },
+            type: "cvEndpoint",
+          })
+        );
+        console.log('CV əlavə olundu');
+      });
+    });
   };
 
   return (

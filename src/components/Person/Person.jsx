@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import ProfileImg from "../../assets/images/profile.jpg";
+import { CgProfile } from "react-icons/cg";
 import { mobile } from "../../responsive";
 import PersonEdit from "../Editables/PersonEdit/PersonEdit";
 
@@ -18,7 +18,21 @@ const Person = ({ editMode, setEditMode }) => {
           <Wrapper>
             <ProfileImageContainer>
               <ProfileImage>
-                <Image src={ProfileImg} />
+                {teacher?.profilePhotoUrl?.name?.length > 0 ? (
+                  <Image src={teacher?.profilePhotoUrl?.download} />
+                ) : (
+                  <div
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <CgProfile style={{ width: "100%", height: "100%" }} />
+                  </div>
+                )}
               </ProfileImage>
               <PersonName>{teacher?.name}</PersonName>
               <Position>{teacher?.position}</Position>
@@ -54,7 +68,7 @@ const Container = styled.div`
   width: 33.33333%;
   height: 100vh;
   color: #fff;
-  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
+  ${mobile({ position: "relative", width: "100%", height: "auto" })}
 `;
 
 const Wrapper = styled.div`
@@ -66,7 +80,7 @@ const Wrapper = styled.div`
   background-color: rgb(56, 84, 123);
   padding: 2rem 3rem 1rem 3rem;
   overflow: auto;
-  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
+  ${mobile({ position: "relative", width: "100%", height: "auto" })}
 `;
 
 const ProfileImageContainer = styled.div`
@@ -94,6 +108,7 @@ const PersonName = styled.h3`
 const Image = styled.img`
   border-radius: 50%;
   width: 150px;
+  height: 150px;
 `;
 
 const Position = styled.h3`

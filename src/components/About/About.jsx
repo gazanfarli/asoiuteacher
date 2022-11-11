@@ -23,13 +23,11 @@ const About = ({ editMode }) => {
 
           <Skills>
             <Title>İxtisas üzrə bacarıqlar</Title>
-            {teacher?.skills?.map((item, index) => (
-              <div key={index} style={{ position: "relative" }}>
+              <div style={{ position: "relative" }}>
                 <Info>
-                  {item.label}: {listArrValues(item, "skill")}
+                  {teacher?.skills?.label}: {listArrValues(teacher?.skills, "skill")}
                 </Info>
               </div>
-            ))}
           </Skills>
 
           <Experience>

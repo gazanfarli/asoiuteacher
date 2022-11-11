@@ -5,12 +5,22 @@ import Achievements from "../Achievements/Achievements";
 import styled from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
 import { mobile } from "../../responsive";
+import axios from "axios";
+import apiUrl from "../../api/apiUrl";
+import { useSelector } from "react-redux";
 
 const Info = ({ editMode, setEditMode }) => {
-
+  const teacher = useSelector((state) => state.teacher.teacher);
   const onClickHandler = () => {
     window.location.reload();
   }
+
+  const saveData = async () => {
+    axios.post(apiUrl, teacher)
+    .then((res) =>{
+      console.log(res)
+    }).catch(err => console.error(err));
+  } 
   
   return (
     <Container>
@@ -25,7 +35,7 @@ const Info = ({ editMode, setEditMode }) => {
         </Routes>
         {editMode && (
           <ButtonContainer>
-            <SaveButton onClick={() => setEditMode((prev) => (prev = false))}>Yadda saxla</SaveButton>
+            <SaveButton onClick={() => {setEditMode((prev) => (prev = false)); saveData();}}>Yadda saxla</SaveButton>
             <CancelButton onClick={() => {
               setEditMode((prev) => (prev = false));
               onClickHandler();

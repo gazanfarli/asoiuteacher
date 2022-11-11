@@ -35,14 +35,6 @@
       {
         "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
         "date": "1975-1981"
-      },
-      {
-        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
-        "date": "1975-1981"
-      },
-      {
-        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
-        "date": "1975-1981"
       }
     ],
     "achievements": [
@@ -75,27 +67,26 @@
         "category": "Fərqlənmə"
       }
     ],
-    "skills": [
-      {
-        "label": "Programming",
-        "skill": [
-          "C/C++",
-          "Python",
-          "Java",
-          "Pascal",
-          "Delphi",
-          "Lisp",
-          "Visual Prolog",
-          "C#",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "PHP",
-          "Fortran",
-          "JavaScript"
-        ]
-      }
-    ],
+    "skills": {
+      "label": "Programming",
+      "skill": [
+        "C/C++",
+        "Python",
+        "Java",
+        "Pascal",
+        "Delphi",
+        "Lisp",
+        "Visual Prolog",
+        "C#",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "Fortran",
+        "JavaScript",
+        "Gulp"
+      ]
+    },
     "experience": [
       {
         "date": "1975-1981",
@@ -151,7 +142,13 @@
       }
     ],
     "contact": "nazila.rahimova@asoiu.edu.az",
-    "profilePhoto": "",
-    "cvEndpoint": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    "profilePhotoUrl": {
+      "name": "profile.jpg2dd5103b-6e99-4236-a752-85bcd904c9e3",
+      "download": "https://firebasestorage.googleapis.com/v0/b/asoiuteacher.appspot.com/o/images%2Fprofile.jpg2dd5103b-6e99-4236-a752-85bcd904c9e3?alt=media&token=0f95bf30-3ccb-401d-84b9-6817401729ea"
+    },
+    "cvEndpoint": {
+      "name": "",
+      "download": ""
+    }
   }
 }

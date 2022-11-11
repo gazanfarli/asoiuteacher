@@ -4,9 +4,9 @@ import styled from "styled-components";
 const CV = ({ teacher }) => {
   return (
     <>
-      {teacher?.cvEndpoint.length > 0 ? (
+      {teacher?.cvEndpoint?.download?.length > 0 ? (
         <a
-          href={teacher?.cvEndpoint}
+          href={teacher?.cvEndpoint?.download}
           download
           style={{ textDecoration: "none" }}
         >
@@ -20,7 +20,6 @@ const CV = ({ teacher }) => {
           CV mövcud deyil, zəhmət olmasa, tənzimləmələri aktiv edib CV yükləyin.
         </CVContainer>
       )}
-      {/* https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf */}
     </>
   );
 };

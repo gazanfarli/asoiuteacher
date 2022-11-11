@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 import { HeadingStyle } from "../../../Helpers/HeadingStyle";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSkills, updateTeacherData } from "../../../features/Teacher";
+import { updateTeacherData } from "../../../features/Teacher";
 import { mobile } from "../../../responsive";
 import Education from "./Education";
 import Experience from "./Experience";
@@ -13,8 +13,6 @@ const AboutEdit = () => {
   const [editListId, setEditListId] = useState({ index: null, name: "" });
   const [addClickedEd, setAddClickedEd] = useState(true);
   const [addClickedEx, setAddClickedEx] = useState(true);
-  const [addClickedSk, setAddClickedSk] = useState(true);
-  const [newSkill, setNewSkill] = useState("");
 
   const dispatch = useDispatch();
   const edDate = useRef(null);
@@ -28,9 +26,7 @@ const AboutEdit = () => {
   const addClickedExHandler = () => {
     setAddClickedEx((prev) => !prev);
   };
-  const addClickedSkHandler = () => {
-    setAddClickedSk((prev) => !prev);
-  };
+  
 
   const saveInfo = (id, name) => {
     let data = teacher && [...teacher[name]];
@@ -85,15 +81,7 @@ const AboutEdit = () => {
     dispatch(updateTeacherData({ data: data, type: name }));
   };
 
-  const addSkill = (skillsId) => {
-    let data = teacher?.skills[skillsId];
-    data = JSON.parse(JSON.stringify(data));
-    if (!data.skill.includes(newSkill) && newSkill.length > 0) {
-      data.skill.push(newSkill);
-    } else addClickedSkHandler();
-
-    dispatch(updateSkills({ id: skillsId, data: data }));
-  };
+  
 
   const deleteInfo = (id, name) => {
     let data = teacher && teacher[name];
@@ -101,13 +89,7 @@ const AboutEdit = () => {
     dispatch(updateTeacherData({ data: data, type: name }));
   };
 
-  const deleteSkill = (skillsId, id) => {
-    let data = teacher?.skills[skillsId];
-    let newSkill = data.skill.filter((item, index) => index !== id);
-    const newData = { ...data, skill: newSkill };
-
-    dispatch(updateSkills({ id: skillsId, data: newData }));
-  };
+  
 
   const setEditId = (index, name) => {
     setEditListId({ index: index, name: name });
@@ -134,12 +116,6 @@ const AboutEdit = () => {
       <SkillsContainer>
         <Title>İxtisas üzrə bacarıqlar</Title>
         <Skills
-          addClickedSk={addClickedSk}
-          addClickedSkHandler={addClickedSkHandler}
-          addSkill={addSkill}
-          deleteSkill={deleteSkill}
-          newSkill={newSkill}
-          setNewSkill={setNewSkill}
           teacher={teacher}
         />
       </SkillsContainer>

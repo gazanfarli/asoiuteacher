@@ -1,39 +1,161 @@
 {
-  "about": [
-    {
-      "title": "tehsil",
-      "date": "1975-1981",
-      "position": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi"
+  "teacher": {
+    "name": "Nazilə Rəhimova",
+    "position": "Kafedra Müdiri",
+    "scientificDegree": "Texniki Elmlər Namizədi, Dosent",
+    "researchArea": "Data Mining, Ekspert Sistemleri, Süni İntellekt, Big Data",
+    "scientificWorks": [
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      },
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      },
+      {
+        "name": "Turist statusunun beynəlxalq və daxili qanunvericilikdə təsbit olunmuş əsas hüquqi elementləri",
+        "category": "Scopus",
+        "publishCountry": "Azərbaycan",
+        "publishDate": "23.05.2005",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      }
+    ],
+    "education": [
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      },
+      {
+        "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981"
+      }
+    ],
+    "achievements": [
+      {
+        "degree": "Bakalavr",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Magistr",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Aspirantura",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      },
+      {
+        "degree": "Doktorantura",
+        "university": "Azərbaycan Dövlət Neft və Sənaye Universiteti",
+        "specialty": "Avtomatika və telemexanika, elektrik mühəndisi",
+        "date": "1975-1981",
+        "category": "Fərqlənmə"
+      }
+    ],
+    "skills": {
+      "label": "Programming",
+      "skill": [
+        "C/C++",
+        "Python",
+        "Java",
+        "Pascal",
+        "Delphi",
+        "Lisp",
+        "Visual Prolog",
+        "C#",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "Fortran",
+        "JavaScript"
+      ]
     },
-    {
-      "title": "tehsil",
-      "date": "29.12.1997",
-      "position": "Texniki Elmlər Namizədi - İnformasiya işlənməsi və idarəetmə sistemləri"
+    "experience": [
+      {
+        "date": "1975-1981",
+        "position": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi"
+      },
+      {
+        "date": "29.12.1997",
+        "position": "Texniki Elmlər Namizədi - İnformasiya işlənməsi və idarəetmə sistemləri"
+      },
+      {
+        "date": "29.12.1997",
+        "position": "Dosent” elmi adı"
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Cisco Networking Academy",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=2%3A5"
+      },
+      {
+        "name": "Cisco Networking Academy",
+        "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=2%3A5"
+      }
+    ],
+    "projects": [
+      {
+        "name": "Proyekt ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur. Recusandae architecto, iusto laborum incidunt vero odio, repellendus accusantium consequuntur sint suscipit voluptatem."
+      },
+      {
+        "name": "Proyekt ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur. Recusandae architecto, iusto laborum incidunt vero odio, repellendus accusantium consequuntur sint suscipit voluptatem."
+      }
+    ],
+    "inventions": [
+      {
+        "name": "İxtira ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur."
+      },
+      {
+        "name": "İxtira ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa, asperiores nemo commodi et aut velit dolores quisquam voluptate, assumenda deleniti beatae aspernatur."
+      }
+    ],
+    "patents": [
+      {
+        "name": "Patent ad 1",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa."
+      },
+      {
+        "name": "Patent ad 2",
+        "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas ex voluptatem sapiente accusantium sed provident accusamus ab adipisci soluta officia atque at culpa."
+      }
+    ],
+    "contact": "nazila.rahimova@asoiu.edu.az",
+    "profilePhotoUrl": {
+      "name": "",
+      "download": ""
     },
-    {
-      "title": "tehsil",
-      "date": "02.11.2001",
-      "position": "Dosent” elmi adı"
-    },
-    {
-      "title": "İxtisas uzrə bacariqlar",
-      "date": null,
-      "position": "C/C++, Python, Java, Pascal, Delphi, Lisp, Visual Prolog, C#, HTML, CSS, JavaScript, PHP, Fortran"
-    },
-    {
-      "title": "Is tecrubesi",
-      "date": "1975-1981",
-      "position": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi"
-    },
-    {
-      "title": "Is tecrubesi",
-      "date": "29.12.1997",
-      "position": "Texniki Elmlər Namizədi - İnformasiya işlənməsi və idarəetmə sistemləri"
-    },
-    {
-      "title": "Is tecrubesi",
-      "date": "02.11.2001",
-      "position": "Dosent” elmi adı"
+    "cvEndpoint": {
+      "name": "",
+      "download": ""
     }
-  ]
+  }
 }

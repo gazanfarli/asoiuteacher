@@ -1,15 +1,23 @@
 import { useRef } from "react";
 import styled from "styled-components";
-import ProfileImg from "../../../assets/images/profile.jpg";
 import Input from "../Input";
 import { MdOutlineModeEdit } from "react-icons/md";
-import EditIcon from '../EditIcon';
+import EditIcon from "../EditIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTeacherData } from "../../../features/Teacher";
 import { mobile } from "../../../responsive";
+import { storage } from "../../../firebase";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
+import { v4 } from "uuid";
+import { CgProfile } from "react-icons/cg";
 
 const PersonEdit = () => {
-  const teacher = useSelector(state => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher.teacher);
   const dispatch = useDispatch();
 
   const imgEdit = useRef(null);
@@ -24,33 +32,74 @@ const PersonEdit = () => {
   };
 
   function changeProfileImg() {
+    // CHANGE PROFILE IMAGE TO UPLOADED IMAGE
     let fs = new FileReader();
-    let file = [...inputEdit.current.files][0];
+    let file = [...inputEdit.current.files][0] || null;
+    if (file === null) return;
     fs.readAsDataURL(file);
-    
+
     fs.onload = () => {
-      imgEdit.current.src = fs.result;
-      console.log(fs.result);
+      if (imgEdit?.current !== null) imgEdit.current.src = fs.result;
     };
+    // DELETE LAST IMAGE FROM FIREBASE
+    if (teacher?.profilePhotoUrl?.name?.length > 0) {
+      const deleteRef = ref(
+        storage,
+        `images/${teacher?.profilePhotoUrl?.name}`
+      );
+
+      // Delete the file
+      deleteObject(deleteRef)
+        .then(() => console.log("Köhnə şəkil silindi"))
+        .catch((error) => console.error(error));
+    }
+
+    // UPLOAD IMAGE TO FIREBASE
+    const id = v4();
+    const cvRef = ref(storage, `images/${file.name + id}`);
+    uploadBytes(cvRef, file).then(() => {
+      getDownloadURL(cvRef).then((url) => {
+        dispatch(
+          updateTeacherData({
+            data: { name: file.name + id, download: url },
+            type: "profilePhotoUrl",
+          })
+        );
+        console.log("Profil şəkli əlavə olundu");
+      });
+    });
   }
 
   const handleChange = (e) => {
-    dispatch(updateTeacherData({data: e.target.value, type: e.target.name}));
+    dispatch(updateTeacherData({ data: e.target.value, type: e.target.name }));
   };
 
   return (
     <Container>
       <Wrapper>
-
         <ProfileImageContainer>
           <ProfileImage>
-            <Img ref={imgEdit} src={ProfileImg} alt="profile_image" />
+            {teacher?.profilePhotoUrl?.name?.length > 0 ? (
+              <Image src={teacher?.profilePhotoUrl?.download} />
+            ) : (
+              <div
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CgProfile style={{ width: "100%", height: "100%" }} />
+              </div>
+            )}
             <Label htmlFor="imgEdit">
               <InputImg
                 id="imgEdit"
                 name="imgEdit"
                 type="file"
-                accept="jpg jpef png"
+                accept="image/png, image/gif, image/jpeg, image/jpg"
                 ref={inputEdit}
                 onChange={changeProfileImg}
               />
@@ -72,6 +121,7 @@ const PersonEdit = () => {
               type="text"
               value={teacher?.name}
               onChange={(e) => handleChange(e)}
+              placeholder='Ad və soyad'
               style={{ fontSize: "22px", marginBottom: "1rem" }}
             />
             <Input
@@ -79,12 +129,19 @@ const PersonEdit = () => {
               type="text"
               value={teacher?.position}
               onChange={(e) => handleChange(e)}
+              placeholder='Vəzifə'
               style={{ fontSize: "20px" }}
             />
-            <EditIcon style={{top: 'auto', bottom: 'auto', width: '1rem', height: '1rem'}} />
+            <EditIcon
+              style={{
+                top: "auto",
+                bottom: "auto",
+                width: "1rem",
+                height: "1rem",
+              }}
+            />
           </PersonInfo>
         </ProfileImageContainer>
-
 
         <InfoContainer>
           <Info>
@@ -118,7 +175,6 @@ const PersonEdit = () => {
             />
           </Info>
         </InfoContainer>
-        
       </Wrapper>
     </Container>
   );
@@ -131,7 +187,7 @@ const Container = styled.div`
   width: 33.33333%;
   height: 100vh;
   color: #fff;
-  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
+  ${mobile({ position: "relative", width: "100%", height: "auto" })}
 `;
 
 const Wrapper = styled.div`
@@ -143,7 +199,7 @@ const Wrapper = styled.div`
   background-color: rgb(56, 84, 123);
   padding: 2rem 3rem 1rem 3rem;
   overflow: auto;
-  ${mobile({position: 'relative', width: '100%', height: 'auto'})}
+  ${mobile({ position: "relative", width: "100%", height: "auto" })}
 `;
 
 const ProfileImageContainer = styled.div`
@@ -165,7 +221,7 @@ const ProfileImage = styled.div`
   margin: 0 0 1.5rem 0;
 `;
 
-const Img = styled.img`
+const Image = styled.img`
   border-radius: 50%;
   width: 150px;
   height: 150px;

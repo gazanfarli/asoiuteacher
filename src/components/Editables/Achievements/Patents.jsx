@@ -197,6 +197,55 @@ const Patents = ({
             <div style={HeadingStyle}>Patent haqqında məlumat</div>
             <br />
           </About>
+          {/* PATENT ADD CLICKED */}
+          {addPatClicked ? (
+            <AddButtonContainer
+              onClick={() => addClickHandler(setAddPatClicked)}
+            >
+              <span>Əlavə et</span>
+              <AiOutlinePlus color="#38547B" fontSize="1.5rem" />
+            </AddButtonContainer>
+          ) : (
+            <Row>
+              <Input
+                name="name"
+                type="text"
+                value={newPatent.name}
+                ref={patentName}
+                placeholder="Patentin adı"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
+                style={{ width: "30%", marginRight: "1rem" }}
+              />
+              <Input
+                name="about"
+                type="text"
+                value={newPatent.about}
+                ref={patentAbout}
+                placeholder="Patent haqqında"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
+                style={{ width: "70%", height: "5rem" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <FaRegTimesCircle
+                  onClick={() => {
+                    addClickHandler(setAddPatClicked);
+                    emptyPatState();
+                  }}
+                  style={iconStyle}
+                />
+                <FiCheckCircle
+                  onClick={() => saveNew("patents")}
+                  style={iconStyle}
+                />
+              </div>
+            </Row>
+          )}
         </div>
       )}
     </>

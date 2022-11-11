@@ -197,6 +197,55 @@ const Inventions = ({
             <div style={HeadingStyle}>İxtira haqqında məlumat</div>
             <br />
           </About>
+          {/* INVENTION ADD CLICKED */}
+          {addInvClicked ? (
+            <AddButtonContainer
+              onClick={() => addClickHandler(setAddInvClicked)}
+            >
+              <span>Əlavə et</span>
+              <AiOutlinePlus color="#38547B" fontSize="1.5rem" />
+            </AddButtonContainer>
+          ) : (
+            <Row>
+              <Input
+                name="name"
+                type="text"
+                value={newInvention.name}
+                ref={inventiontName}
+                placeholder="İxtiranın adı"
+                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                style={{ width: "30%", marginRight: "1rem" }}
+              />
+              <Input
+                name="about"
+                type="text"
+                value={newInvention.about}
+                ref={inventionAbout}
+                placeholder="İxtira haqqında"
+                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                style={{ width: "70%", height: "5rem" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <FaRegTimesCircle
+                  onClick={() => {
+                    addClickHandler(setAddInvClicked);
+                    emptyInvState();
+                  }}
+                  style={iconStyle}
+                />
+                <FiCheckCircle
+                  onClick={() => saveNew("inventions")}
+                  style={iconStyle}
+                />
+              </div>
+            </Row>
+          )}
         </div>
       )}
     </>
