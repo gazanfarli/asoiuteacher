@@ -13,6 +13,7 @@ import Inventions from "./Inventions";
 import Projects from "./Projects";
 import { mobile } from "../../../responsive";
 import CV from "./CV";
+import alertify from 'alertifyjs'
 
 const AchievementsEdit = () => {
   const dispatch = useDispatch();
@@ -93,6 +94,7 @@ const AchievementsEdit = () => {
         });
         emptyAchState();
         addClickHandler(setAchAddClicked);
+        alertify.success('Yeni nailiyyət əlavə olundu');
       }
     }
 
@@ -109,6 +111,7 @@ const AchievementsEdit = () => {
         });
         emptyCeState();
         addClickHandler(setCeAddClicked);
+        alertify.success('Yeni sertifikat əlavə olundu');
       }
     }
 
@@ -125,6 +128,7 @@ const AchievementsEdit = () => {
         });
         emptyPatState();
         addClickHandler(setAddPatClicked);
+        alertify.success('Yeni patent əlavə olundu');
       }
     }
 
@@ -141,6 +145,7 @@ const AchievementsEdit = () => {
         });
         emptyInvState();
         addClickHandler(setAddInvClicked);
+        alertify.success('Yeni ixtira əlavə olundu');
       }
     }
 
@@ -157,6 +162,7 @@ const AchievementsEdit = () => {
         });
         emptyProState();
         addClickHandler(setAddProClicked);
+        alertify.success('Yeni proyekt əlavə olundu');
       }
     }
 
@@ -207,6 +213,14 @@ const AchievementsEdit = () => {
     let data = teacher && teacher[name];
     data = data.filter((item, index) => index !== id);
     dispatch(updateTeacherData({ data: data, type: name }));
+    const arr = ['achievements', 'certificates', 'patents', 'inventions', 'projects'];
+    const newArr = ['nailiyyət', 'sertifikat', 'patent', 'ixtira', 'proyekt'];
+    arr.forEach((item, index) => {
+      if(item === name) {
+        name = newArr[index];
+      }
+    })
+    alertify.error(`Bir ${name} siyahıdan silindi`);
   };
 
   const setEditId = (index, name) => {

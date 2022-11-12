@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { updateTeacherData } from "../../../features/Teacher";
 import { iconStyle, Input } from "./AboutEdit";
+import alertify from 'alertifyjs';
 
 const Skills = ({ teacher }) => {
   const [addClickedSk, setAddClickedSk] = useState(true);
@@ -15,14 +16,18 @@ const Skills = ({ teacher }) => {
     setAddClickedSk((prev) => !prev);
   };
 
-  const addSkill = (skillsId) => {
+  const addSkill = () => {
     let data = teacher?.skills;
     data = JSON.parse(JSON.stringify(data));
     if (!data.skill.includes(newSkill) && newSkill.length > 0) {
       data.skill.push(newSkill);
-    } else addClickedSkHandler();
-
+    } else {
+      addClickedSkHandler()
+      return 0;
+    };
+    
     dispatch(updateTeacherData({ data: data, type: "skills" }));
+    alertify.success('Yeni bacarıq əlavə olundu');
   };
 
   const deleteSkill = (id) => {
@@ -31,13 +36,13 @@ const Skills = ({ teacher }) => {
     const newData = { ...data, skill: newSkill };
 
     dispatch(updateTeacherData({ data: newData, type: "skills" }));
+    alertify.error(`Bir bacarıq siyahıdan silindi`);
   };
 
   const handleChange = (e) => {
     let data = teacher?.skills;
     const newData = { ...data, label: e.target.value };
     dispatch(updateTeacherData({ data: newData, type: 'skills' }));
-
   };
 
   return (

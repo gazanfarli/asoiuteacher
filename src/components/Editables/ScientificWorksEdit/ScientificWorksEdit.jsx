@@ -5,6 +5,7 @@ import { updateTeacherData } from '../../../features/Teacher';
 import { mobile } from "../../../responsive";
 import Works from "./Works";
 import NewWork from './NewWork';
+import alertify from "alertifyjs";
 
 const ScientificWorksEdit = () => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -39,6 +40,7 @@ const ScientificWorksEdit = () => {
     let works = [...teacher?.scientificWorks];
     works.push(newWork);
     dispatch(updateTeacherData({data: works, type: 'scientificWorks'}));
+    alertify.success('Yeni elmi iş əlavə olundu');
     setNewWork({
       name: "",
       category: "",
@@ -46,6 +48,13 @@ const ScientificWorksEdit = () => {
       publishDate: "",
       link: "",
     });
+  };
+
+  const deleteInfo = (id, name) => {
+    let data = teacher && teacher[name];
+    data = data.filter((item, index) => index !== id);
+    dispatch(updateTeacherData({ data: data, type: name }));
+    alertify.error(`Bir elmi iş siyahıdan silindi`);
   };
   
   return (
@@ -55,6 +64,7 @@ const ScientificWorksEdit = () => {
           addClicked={addClicked}
           addClickedHandler={addClickedHandler}
           teacher={teacher}
+          deleteInfo={deleteInfo}
         />
       </Container>
       

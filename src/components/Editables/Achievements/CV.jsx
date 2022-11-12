@@ -11,6 +11,7 @@ import {
 } from "firebase/storage";
 import { v4 } from "uuid";
 import { updateTeacherData } from "../../../features/Teacher";
+import alertify from 'alertifyjs';
 
 const CV = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -45,7 +46,7 @@ const CV = () => {
             type: "cvEndpoint",
           })
         );
-        console.log('CV əlavə olundu');
+        alertify.success('CV əlavə olundu');
       });
     });
   };

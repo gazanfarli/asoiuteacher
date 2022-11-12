@@ -7,6 +7,7 @@ import { mobile } from "../../../responsive";
 import Education from "./Education";
 import Experience from "./Experience";
 import Skills from './Skills';
+import alertify from "alertifyjs";
 
 const AboutEdit = () => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -62,6 +63,7 @@ const AboutEdit = () => {
           date: edDate.current.value,
           specialty: specialty.current.value,
         });
+        alertify.success('Yeni təhsil əlavə olundu');
       }
     } else if (name === "experience") {
       if (
@@ -75,6 +77,7 @@ const AboutEdit = () => {
           date: exDate.current.value,
           position: position.current.value,
         });
+        alertify.success('Yeni təcrübə əlavə olundu');
       }
     }
 
@@ -87,6 +90,14 @@ const AboutEdit = () => {
     let data = teacher && teacher[name];
     data = data.filter((item, index) => index !== id);
     dispatch(updateTeacherData({ data: data, type: name }));
+    const arr = ['education', 'experience'];
+    const newArr = ['təhsil', 'təcrübə'];
+    arr.forEach((item, index) => {
+      if(item === name) {
+        name = newArr[index];
+      }
+    })
+    alertify.error(`Bir ${name} siyahıdan silindi`);
   };
 
   

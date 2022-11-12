@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { mobile } from "../../../responsive";
 import { HeadingStyle } from "../../../Helpers/HeadingStyle";
 import { Container } from "./ScientificWorksEdit";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-const Works = ({ teacher, addClicked, addClickedHandler }) => {
+const Works = ({ teacher, addClicked, addClickedHandler, deleteInfo }) => {
   const columns = [
     "Elmi işin adı",
     "Kateqoriyası",
@@ -14,7 +15,7 @@ const Works = ({ teacher, addClicked, addClickedHandler }) => {
   ];
   return (
     <Container>
-      <div style={{width: '100%', overflow: 'auto'}}>
+      <div style={{ width: "100%", overflow: "auto" }}>
         <Table style={{ marginBottom: "2rem" }}>
           <Thead>
             <Tr>
@@ -30,7 +31,23 @@ const Works = ({ teacher, addClicked, addClickedHandler }) => {
                 <Td>{item.category}</Td>
                 <Td>{item.publishCountry}</Td>
                 <Td>{item.publishDate}</Td>
-                <Td>{item.link}</Td>
+                <Td style={{ display: "flex", justifyContent: 'space-around', alignItems: 'center' }}>
+                  <div style={{ width: "80%", inlineSize: "180px", overflowWrap: 'break-word' }}>
+                    {item.link}
+                  </div>
+                  <div>
+                    <RiDeleteBin6Line
+                      onClick={() => deleteInfo(index, "scientificWorks")}
+                      style={{
+                        width: "1.2rem",
+                        height: "1.2rem",
+                        marginLeft: "0.5rem",
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </div>
+                </Td>
               </Tr>
             ))}
             {addClicked && (

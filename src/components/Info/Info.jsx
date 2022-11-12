@@ -8,6 +8,7 @@ import { mobile } from "../../responsive";
 import axios from "axios";
 import apiUrl from "../../api/apiUrl";
 import { useSelector } from "react-redux";
+import alertify from 'alertifyjs'
 
 const Info = ({ editMode, setEditMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -18,7 +19,8 @@ const Info = ({ editMode, setEditMode }) => {
   const saveData = async () => {
     axios.post(apiUrl, teacher)
     .then((res) =>{
-      console.log(res)
+      console.log(res);
+      alertify.success('Dəyişikliklər qeyd olundu');
     }).catch(err => console.error(err));
   } 
   

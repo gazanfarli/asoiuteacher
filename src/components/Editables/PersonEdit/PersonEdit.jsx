@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import Input from "../Input";
 import { MdOutlineModeEdit } from "react-icons/md";
@@ -15,10 +15,13 @@ import {
 } from "firebase/storage";
 import { v4 } from "uuid";
 import { CgProfile } from "react-icons/cg";
+import ImgNotFound from "./ImgNotFound";
+import alertify from "alertifyjs";
 
 const PersonEdit = () => {
   const teacher = useSelector((state) => state.teacher.teacher);
   const dispatch = useDispatch();
+  const [resetImg, setResetImg] = useState(false);
 
   const imgEdit = useRef(null);
   const inputEdit = useRef(null);
@@ -65,7 +68,7 @@ const PersonEdit = () => {
             type: "profilePhotoUrl",
           })
         );
-        console.log("Profil şəkli əlavə olundu");
+        alertify.success('Profil şəkli dəyişdirildi');
       });
     });
   }
@@ -73,14 +76,33 @@ const PersonEdit = () => {
   const handleChange = (e) => {
     dispatch(updateTeacherData({ data: e.target.value, type: e.target.name }));
   };
-
+  
   return (
     <Container>
       <Wrapper>
         <ProfileImageContainer>
           <ProfileImage>
             {teacher?.profilePhotoUrl?.name?.length > 0 ? (
-              <Image src={teacher?.profilePhotoUrl?.download} />
+              <>
+              {!resetImg ? (
+                <Image
+                  src={teacher?.profilePhotoUrl?.download}
+                  onError={() => setResetImg(true)}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <ImgNotFound />
+                </div>
+              )}
+            </>
             ) : (
               <div
                 style={{

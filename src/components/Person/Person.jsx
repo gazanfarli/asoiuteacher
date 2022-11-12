@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { CgProfile } from "react-icons/cg";
 import { mobile } from "../../responsive";
 import PersonEdit from "../Editables/PersonEdit/PersonEdit";
+import { useState } from "react";
+import ImgNotFound from "../Editables/PersonEdit/ImgNotFound";
 
 const Person = ({ editMode, setEditMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
+  const [resetImg, setResetImg] = useState(false);
 
   const setEditOn = () => {
     setEditMode((prev) => (prev = true));
@@ -19,7 +22,26 @@ const Person = ({ editMode, setEditMode }) => {
             <ProfileImageContainer>
               <ProfileImage>
                 {teacher?.profilePhotoUrl?.name?.length > 0 ? (
-                  <Image src={teacher?.profilePhotoUrl?.download} />
+                  <>
+                    {!resetImg ? (
+                      <Image
+                        src={teacher?.profilePhotoUrl?.download}
+                        onError={() => setResetImg(true)}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: "150px",
+                          height: "150px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CgProfile style={{ width: "100%", height: "100%" }} />
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div
                     style={{
@@ -30,7 +52,7 @@ const Person = ({ editMode, setEditMode }) => {
                       alignItems: "center",
                     }}
                   >
-                    <CgProfile style={{ width: "100%", height: "100%" }} />
+                    <ImgNotFound />
                   </div>
                 )}
               </ProfileImage>
