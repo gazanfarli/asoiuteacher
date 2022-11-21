@@ -1,7 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
-import { mobile } from "../../../responsive";
-import { HeadingStyle } from "../../../Helpers/HeadingStyle";
+import { mobile } from "../../responsive";
+import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import { Container } from "./ScientificWorksEdit";
 import { RiDeleteBin6Line } from "react-icons/ri";
 

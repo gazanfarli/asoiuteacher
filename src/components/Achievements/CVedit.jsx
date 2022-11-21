@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { storage } from "../../../firebase";
+import { storage } from "../../firebase";
 import {
   ref,
   uploadBytes,
@@ -10,7 +10,7 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { v4 } from "uuid";
-import { updateTeacherData } from "../../../features/Teacher";
+import { updateTeacherData } from "../../features/Teacher";
 import alertify from 'alertifyjs';
 
 const CV = () => {

@@ -1,10 +1,10 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { iconStyle, Tr, Td, Input, Table, Tbody, Th, Thead } from "./AchievementsEdit";
+import { iconStyle, Tr, Td, Input, Table, Tbody, Th, Thead } from "./Achievements";
 import AddButton from "./AddButton";
 
-const Education = ({
+const EducationEdit = ({
   teacher,
   editListId,
   degreeInput,
@@ -151,4 +151,4 @@ const Education = ({
   );
 };
 
-export default Education;
+export default EducationEdit;

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useState } from "react";
-import { updateTeacherData } from '../../../features/Teacher';
-import { mobile } from "../../../responsive";
+import { updateTeacherData } from '../../features/Teacher';
+import { mobile } from "../../responsive";
 import Works from "./Works";
 import NewWork from './NewWork';
 import alertify from "alertifyjs";

@@ -3,8 +3,7 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import styled from "styled-components";
-import { Name, Input, About, Row } from "./AchievementsEdit";
-import { iconStyle } from './AchievementsEdit';
+import { Name, Input, About, Row, iconStyle } from "./Achievements";
 
 const Projects = ({
   teacher,

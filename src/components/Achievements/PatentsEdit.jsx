@@ -3,53 +3,53 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import styled from "styled-components";
-import { Name, Input, About, Row } from "./AchievementsEdit";
-import { iconStyle } from './AchievementsEdit';
+import { Name, Input, About, Row } from "./Achievements";
+import { iconStyle } from './Achievements';
 
-const Inventions = ({
+const Patents = ({
   teacher,
   editListId,
   HeadingStyle,
-  inventiontName,
-  inventionAbout,
+  patentName,
+  patentAbout,
   setEditId,
   saveInfo,
   deleteInfo,
-  addInvClicked,
+  addPatClicked,
   addClickHandler,
-  newInvention,
-  setAddInvClicked,
+  newPatent,
+  setAddPatClicked,
   handleChange,
-  setNewInvention,
-  emptyInvState,
+  setNewPatent,
+  emptyPatState,
   saveNew
 }) => {
   return (
     <>
-      {teacher?.inventions?.length > 0 ? (
+      {teacher?.patents?.length > 0 ? (
         <>
-          {teacher?.inventions?.map((item, index) =>
-            index === editListId.index && editListId.name === "inventions" ? (
+          {teacher?.patents?.map((item, index) =>
+            index === editListId.index && editListId.name === "patents" ? (
               <div key={item.name}>
                 <Name>
                   <span> </span>
-                  <span style={HeadingStyle}>İxtiranın adı:</span>
+                  <span style={HeadingStyle}>Patentin adı:</span>
                   <Input
                     name="name"
                     type="text"
                     defaultValue={item.name}
-                    ref={inventiontName}
+                    ref={patentName}
                     style={{ width: "50%", height: "2rem", marginLeft: "1rem" }}
                   />
                 </Name>
                 <About>
-                  <div style={HeadingStyle}>İxtira haqqında məlumat:</div>
+                  <div style={HeadingStyle}>Patent haqqında məlumat:</div>
                   <br />
                   <Input
                     name="about"
                     type="text"
                     defaultValue={item.about}
-                    ref={inventionAbout}
+                    ref={patentAbout}
                     style={{ width: "100%", height: "5rem", flexWrap: "wrap" }}
                   />
                   <IconContainer>
@@ -70,7 +70,7 @@ const Inventions = ({
                     <div
                       onClick={() => {
                         setEditId(null);
-                        saveInfo(index, "inventions");
+                        saveInfo(index, "patents");
                       }}
                       style={{
                         width: "50%",
@@ -87,7 +87,7 @@ const Inventions = ({
             ) : (
               <div key={item.name}>
                 <Name style={{ display: "flex" }}>
-                  <span style={HeadingStyle}>İxtiranın adı:</span>
+                  <span style={HeadingStyle}>Patentin adı:</span>
                   <div
                     style={{
                       display: "flex",
@@ -99,7 +99,7 @@ const Inventions = ({
                   >
                     {item.name}
                     <FiEdit
-                      onClick={() => setEditId(index, "inventions")}
+                      onClick={() => setEditId(index, "patents")}
                       style={{
                         width: "1.2rem",
                         height: "1.2rem",
@@ -111,7 +111,7 @@ const Inventions = ({
                   </div>
                 </Name>
                 <About>
-                  <div style={HeadingStyle}>İxtira haqqında məlumat:</div>
+                  <div style={HeadingStyle}>Patent haqqında məlumat:</div>
                   <br />
                   <div
                     style={{
@@ -123,7 +123,7 @@ const Inventions = ({
                   >
                     <p style={{ width: "80%" }}>{item.about}</p>
                     <RiDeleteBin6Line
-                      onClick={() => deleteInfo(index, "inventions")}
+                      onClick={() => deleteInfo(index, "patents")}
                       style={{
                         width: "1.2rem",
                         height: "1.2rem",
@@ -137,10 +137,10 @@ const Inventions = ({
               </div>
             )
           )}
-          {/* INVENTION ADD CLICKED */}
-          {addInvClicked ? (
+          {/* PATENT ADD CLICKED */}
+          {addPatClicked ? (
             <AddButtonContainer
-              onClick={() => addClickHandler(setAddInvClicked)}
+              onClick={() => addClickHandler(setAddPatClicked)}
             >
               <span>Əlavə et</span>
               <AiOutlinePlus color="#38547B" fontSize="1.5rem" />
@@ -150,19 +150,19 @@ const Inventions = ({
               <Input
                 name="name"
                 type="text"
-                value={newInvention.name}
-                ref={inventiontName}
-                placeholder="İxtiranın adı"
-                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                value={newPatent.name}
+                ref={patentName}
+                placeholder="Patentin adı"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
                 style={{ width: "30%", marginRight: "1rem" }}
               />
               <Input
                 name="about"
                 type="text"
-                value={newInvention.about}
-                ref={inventionAbout}
-                placeholder="İxtira haqqında"
-                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                value={newPatent.about}
+                ref={patentAbout}
+                placeholder="Patent haqqında"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
                 style={{ width: "70%", height: "5rem" }}
               />
               <div
@@ -174,13 +174,13 @@ const Inventions = ({
               >
                 <FaRegTimesCircle
                   onClick={() => {
-                    addClickHandler(setAddInvClicked);
-                    emptyInvState();
+                    addClickHandler(setAddPatClicked);
+                    emptyPatState();
                   }}
                   style={iconStyle}
                 />
                 <FiCheckCircle
-                  onClick={() => saveNew("inventions")}
+                  onClick={() => saveNew("patents")}
                   style={iconStyle}
                 />
               </div>
@@ -191,16 +191,16 @@ const Inventions = ({
         <div>
           <Name>
             <span> </span>
-            <span style={HeadingStyle}>İxtiranın adı</span>
+            <span style={HeadingStyle}>Patentin adı</span>
           </Name>
           <About>
-            <div style={HeadingStyle}>İxtira haqqında məlumat</div>
+            <div style={HeadingStyle}>Patent haqqında məlumat</div>
             <br />
           </About>
-          {/* INVENTION ADD CLICKED */}
-          {addInvClicked ? (
+          {/* PATENT ADD CLICKED */}
+          {addPatClicked ? (
             <AddButtonContainer
-              onClick={() => addClickHandler(setAddInvClicked)}
+              onClick={() => addClickHandler(setAddPatClicked)}
             >
               <span>Əlavə et</span>
               <AiOutlinePlus color="#38547B" fontSize="1.5rem" />
@@ -210,19 +210,19 @@ const Inventions = ({
               <Input
                 name="name"
                 type="text"
-                value={newInvention.name}
-                ref={inventiontName}
-                placeholder="İxtiranın adı"
-                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                value={newPatent.name}
+                ref={patentName}
+                placeholder="Patentin adı"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
                 style={{ width: "30%", marginRight: "1rem" }}
               />
               <Input
                 name="about"
                 type="text"
-                value={newInvention.about}
-                ref={inventionAbout}
-                placeholder="İxtira haqqında"
-                onChange={(e) => handleChange(e, newInvention, setNewInvention)}
+                value={newPatent.about}
+                ref={patentAbout}
+                placeholder="Patent haqqında"
+                onChange={(e) => handleChange(e, newPatent, setNewPatent)}
                 style={{ width: "70%", height: "5rem" }}
               />
               <div
@@ -234,13 +234,13 @@ const Inventions = ({
               >
                 <FaRegTimesCircle
                   onClick={() => {
-                    addClickHandler(setAddInvClicked);
-                    emptyInvState();
+                    addClickHandler(setAddPatClicked);
+                    emptyPatState();
                   }}
                   style={iconStyle}
                 />
                 <FiCheckCircle
-                  onClick={() => saveNew("inventions")}
+                  onClick={() => saveNew("patents")}
                   style={iconStyle}
                 />
               </div>
@@ -252,7 +252,7 @@ const Inventions = ({
   );
 };
 
-export default Inventions;
+export default Patents;
 
 const IconContainer = styled.div`
   display: flex;

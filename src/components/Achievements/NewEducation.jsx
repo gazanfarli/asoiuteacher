@@ -1,6 +1,6 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
-import { Input, Row } from "./AchievementsEdit";
+import { Input, Row } from "./Achievements";
 
 const NewEducation = ({
   addAchClicked,

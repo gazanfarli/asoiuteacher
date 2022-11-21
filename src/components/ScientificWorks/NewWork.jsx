@@ -1,8 +1,8 @@
 import { FaRegTimesCircle } from 'react-icons/fa';
 import { FiCheckCircle } from 'react-icons/fi';
 import styled from 'styled-components';
-import countries from "../../../api/countries";
-import { HeadingStyle } from '../../../Helpers/HeadingStyle';
+import countries from "../../api/countries";
+import { HeadingStyle } from '../../Helpers/HeadingStyle';
 
 const NewWork = ({
     addClicked,
