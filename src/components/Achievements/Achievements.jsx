@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { HeadingStyle } from "../../Helpers/HeadingStyle";
 import AchievementsEdit from "../Editables/Achievements/AchievementsEdit";
 import OtherAchievements from "./Others";
-import { mobile } from "../../responsive";
-import CV from './CV';
+import { mobile, xs } from "../../responsive";
+import CV from "./CV";
 
 const Achievements = ({ editMode }) => {
   const teacher = useSelector((state) => state.teacher.teacher);
@@ -40,7 +40,7 @@ const Achievements = ({ editMode }) => {
             </Tbody>
           </Table>
 
-          <Table>
+          <Table style={{ overflowWrap: "break-word" }}>
             <Thead>
               <Tr>
                 <Th>Sertifikatın adı</Th>
@@ -68,7 +68,6 @@ const Achievements = ({ editMode }) => {
 
           <Title>CV</Title>
           <CV teacher={teacher} />
-
         </Container>
       ) : (
         <AchievementsEdit />
@@ -89,6 +88,8 @@ const Container = styled.div`
 
 const Table = styled.table`
   border-spacing: 5px;
+  table-layout: fixed;
+  width: 100%;
   ${mobile({ overflow: "auto", width: "100%" })}
 `;
 
@@ -100,6 +101,7 @@ const Th = styled.th`
   padding: 1rem;
   background-color: #f4f5fc;
   ${HeadingStyle};
+  ${xs({overflow: 'scroll'})}
 `;
 
 const Tbody = styled.tbody``;
@@ -109,6 +111,7 @@ const Tr = styled.tr``;
 const Td = styled.td`
   padding: 1rem;
   background-color: #f4f5fc;
+  ${xs({overflow: 'scroll'})}
 `;
 
 const Title = styled.div`
@@ -117,4 +120,3 @@ const Title = styled.div`
   padding: 2.2rem 0 1rem 1rem;
   background-color: white;
 `;
-

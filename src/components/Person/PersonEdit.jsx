@@ -4,9 +4,9 @@ import Input from "../Input";
 import { MdOutlineModeEdit } from "react-icons/md";
 import EditIcon from "../EditIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTeacherData } from "../../../features/Teacher";
-import { mobile } from "../../../responsive";
-import { storage } from "../../../firebase";
+import { updateTeacherData } from "../../features/Teacher";
+import { mobile } from "../../responsive";
+import { storage } from "../../firebase";
 import {
   deleteObject,
   getDownloadURL,
@@ -18,7 +18,10 @@ import { CgProfile } from "react-icons/cg";
 import ImgNotFound from "./ImgNotFound";
 import alertify from "alertifyjs";
 
-const PersonEdit = () => {
+const PersonEdit = ({
+    set,
+    onClickHandler
+}) => {
   const teacher = useSelector((state) => state.teacher.teacher);
   const dispatch = useDispatch();
   const [resetImg, setResetImg] = useState(false);
@@ -197,6 +200,15 @@ const PersonEdit = () => {
             />
           </Info>
         </InfoContainer>
+        <ButtonContainer>
+            <Button
+              color="red"
+              onClick={() => onClickHandler(set)}
+            >
+              Ləğv et
+            </Button>
+            <Button color="#1abb00">Yadda saxla</Button>
+          </ButtonContainer>
       </Wrapper>
     </Container>
   );
@@ -248,6 +260,7 @@ const Image = styled.img`
   width: 150px;
   height: 150px;
   opacity: 0.7;
+  object-fit: cover;
 `;
 
 const Label = styled.label`
@@ -285,4 +298,22 @@ const Title = styled.h3`
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  width: 48%;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 6px;
+  background-color: ${(el) => el.color};
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
 `;

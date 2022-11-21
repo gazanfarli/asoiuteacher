@@ -1,10 +1,10 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Input, Row, iconStyle, Date, Info } from "./AboutEdit";
+import { Input, RowEdit, iconStyle, DateEdit, InfoEdit } from "./About";
 import AddButton from '../AddButton';
 
-const Experience = ({ 
+const ExperienceEdit = ({ 
     teacher, 
     editListId,
     setEditId,
@@ -21,7 +21,7 @@ const Experience = ({
         {/* WHEN EDIT ICON CLICKED */}
         {teacher?.experience?.map((item, index) =>
           index === editListId.index && editListId.name === "experience" ? (
-            <Row key={index}>
+            <RowEdit key={index}>
               <Input
                 name="date"
                 type="text"
@@ -44,12 +44,12 @@ const Experience = ({
                 style={iconStyle}
                 onClick={() => saveInfo(index, "experience")}
               />
-            </Row>
+            </RowEdit>
           ) : (
             // DEFAULT EDIT MODE VIEW
-            <Row key={index}>
-              <Date>{item.date}</Date>
-              <Info>{item.position}</Info>
+            <RowEdit key={index}>
+              <DateEdit>{item.date}</DateEdit>
+              <InfoEdit>{item.position}</InfoEdit>
               <FiEdit
                 onClick={() => setEditId(index, "experience")}
                 style={{
@@ -69,7 +69,7 @@ const Experience = ({
                   cursor: "pointer",
                 }}
               />
-            </Row>
+            </RowEdit>
           )
         )}
 
@@ -77,7 +77,7 @@ const Experience = ({
           <AddButton onclick={addClickedExHandler} />
         ) : (
           // WHEN ADD BUTTON CLICKED
-          <Row>
+          <RowEdit>
             <Input
               name="dateAdd"
               type="text"
@@ -100,10 +100,10 @@ const Experience = ({
                 addInfo("experience");
               }}
             />
-          </Row>
+          </RowEdit>
         )}
     </>
   )
 }
 
-export default Experience
+export default ExperienceEdit

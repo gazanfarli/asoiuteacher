@@ -3,8 +3,8 @@ import { FaRegTimesCircle, FaTimes } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { updateTeacherData } from "../../../features/Teacher";
-import { iconStyle, Input } from "./AboutEdit";
+import { updateTeacherData } from "../../features/Teacher";
+import { iconStyle, Input } from "./About";
 import alertify from 'alertifyjs';
 
 const Skills = ({ teacher }) => {

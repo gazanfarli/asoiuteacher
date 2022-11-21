@@ -1,24 +1,46 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { CgProfile } from "react-icons/cg";
+import { TbEdit } from "react-icons/tb";
 import { mobile } from "../../responsive";
-import PersonEdit from "../Editables/PersonEdit/PersonEdit";
+import PersonEdit from "./PersonEdit";
 import { useState } from "react";
-import ImgNotFound from "../Editables/PersonEdit/ImgNotFound";
+import ImgNotFound from "./ImgNotFound";
 
-const Person = ({ editMode, setEditMode }) => {
+const Person = () => {
   const teacher = useSelector((state) => state.teacher.teacher);
+  const [editPerson, setEditPerson] = useState(false);
   const [resetImg, setResetImg] = useState(false);
 
-  const setEditOn = () => {
-    setEditMode((prev) => (prev = true));
+  const onClickHandler = (set) => {
+    set((prev) => !prev);
+  };
+
+  const tbEditIconStyle = {
+    position: "absolute",
+    top: "2rem",
+    right: "2rem",
+    cursor: "pointer",
+    width: "25px",
+    height: "25px",
+    opacity: "0.8",
   };
 
   return (
-    <>
-      {!editMode ? (
-        <Container>
-          <Wrapper>
+    <Container>
+      <Wrapper>
+        {editPerson ? (
+          <>
+            <PersonEdit onClickHandler={onClickHandler} set={setEditPerson} />
+            <ButtonContainer>
+              <Button color="red" onClick={() => onClickHandler(setEditPerson)}>
+                Ləğv et
+              </Button>
+              <Button color="#1abb00">Yadda saxla</Button>
+            </ButtonContainer>
+          </>
+        ) : (
+          <>
             <ProfileImageContainer>
               <ProfileImage>
                 {teacher?.profilePhotoUrl?.name?.length > 0 ? (
@@ -73,13 +95,14 @@ const Person = ({ editMode, setEditMode }) => {
                 <Subtitle>{teacher?.contact}</Subtitle>
               </Info>
             </InfoContainer>
-            <Button onClick={setEditOn}>Tənzimləmələr</Button>
-          </Wrapper>
-        </Container>
-      ) : (
-        <PersonEdit teacher={teacher} />
-      )}
-    </>
+            <TbEdit
+              style={tbEditIconStyle}
+              onClick={() => onClickHandler(setEditPerson)}
+            />
+          </>
+        )}
+      </Wrapper>
+    </Container>
   );
 };
 
@@ -131,6 +154,7 @@ const Image = styled.img`
   border-radius: 50%;
   width: 150px;
   height: 150px;
+  object-fit: cover;
 `;
 
 const Position = styled.h3`
@@ -157,18 +181,20 @@ const Subtitle = styled.p`
   font-size: 1rem;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Button = styled.button`
-  width: 100%;
-  font-size: 20px;
-  margin-top: 3rem;
-  padding: 1rem 0;
-  border: 0;
-  border-radius: 5px;
-  background-color: #1b3b67;
+  width: 48%;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 6px;
+  background-color: ${(el) => el.color};
   color: white;
   cursor: pointer;
-  transition: all 0.4s ease;
-  &:hover {
-    opacity: 0.8;
-  }
+  font-size: 1.1rem;
 `;

@@ -33,7 +33,7 @@ const ScientificWorks = ({ editMode }) => {
                 <Td>{item.category}</Td>
                 <Td>{item.publishCountry}</Td>
                 <Td>{item.publishDate}</Td>
-                <Td>{item.link}</Td>
+                <Td style={{ maxWidth: '180px', overflowWrap: 'break-word'}}>{item.link}</Td>
               </Tr>
             ))}
           </Tbody>

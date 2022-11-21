@@ -3,9 +3,9 @@ import Info from "../components/Info/Info";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import apiUrl from "../api/apiUrl";
-import axios from "axios";
-import { getTeacher } from "../features/Teacher";
+// import apiUrl from "../api/apiUrl";
+// import axios from "axios";
+// import { getTeacher } from "../features/Teacher";
 import { mobile } from "../responsive";
 
 const Home = () => {
@@ -14,12 +14,12 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(apiUrl)
-      .then((res) => {
-        dispatch(getTeacher(res.data));
-      })
-      .catch((err) => console.error(err));
+    // axios
+    //   .get(apiUrl)
+    //   .then((res) => {
+    //     dispatch(getTeacher(res.data));
+    //   })
+    //   .catch((err) => console.error(err));
   }, [dispatch]);
 
   return (

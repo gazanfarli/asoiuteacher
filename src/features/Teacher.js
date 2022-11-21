@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import data from '../api/db.json';
 
 
  
 export const teacherSlice = createSlice({
     name: 'teacher',
-    initialState: {},
+    initialState: data,
     reducers: {
         getTeacher: (state, action) => {
             state.teacher = action.payload;

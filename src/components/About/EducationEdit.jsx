@@ -1,10 +1,10 @@
 import { FaRegTimesCircle } from "react-icons/fa";
 import { FiCheckCircle, FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Input, Row, iconStyle, Date, Info } from "./AboutEdit";
+import { Input, RowEdit, iconStyle, DateEdit, InfoEdit } from "./About";
 import AddButton from '../AddButton';
 
-const Education = ({
+const EducationEdit = ({
   teacher,
   edDate,
   specialty,
@@ -21,7 +21,7 @@ const Education = ({
     {/* WHEN EDIT ICON CLICKED */}
       {teacher?.education?.map((item, index) =>
         index === editListId.index && editListId.name === "education" ? (
-          <Row key={index}>
+          <RowEdit key={index}>
             <Input
               name="date"
               type="text"
@@ -44,12 +44,12 @@ const Education = ({
               style={iconStyle}
               onClick={() => saveInfo(index, "education")}
             />
-          </Row>
+          </RowEdit>
         ) : (
           // DEFAULT EDIT MODE VIEW
-          <Row key={index}>
-            <Date>{item.date}</Date>
-            <Info>{item.specialty}</Info>
+          <RowEdit key={index}>
+            <DateEdit>{item.date}</DateEdit>
+            <InfoEdit>{item.specialty}</InfoEdit>
             <FiEdit
               onClick={() => setEditId(index, "education")}
               style={{
@@ -69,7 +69,7 @@ const Education = ({
                 cursor: "pointer",
               }}
             />
-          </Row>
+          </RowEdit>
         )
       )}
 
@@ -77,7 +77,7 @@ const Education = ({
           <AddButton onclick={addClickedEdHandler} />
         ) : (
           // WHEN ADD BUTTON CLICKED
-          <Row>
+          <RowEdit>
             <Input
               name="dateAdd"
               type="text"
@@ -99,10 +99,10 @@ const Education = ({
                 addInfo("education");
               }}
             />
-          </Row>
+          </RowEdit>
         )}
     </>
   );
 };
 
-export default Education;
+export default EducationEdit;
