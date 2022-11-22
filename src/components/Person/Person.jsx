@@ -8,7 +8,7 @@ import { useState } from "react";
 import ImgNotFound from "./ImgNotFound";
 
 const Person = () => {
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const [editPerson, setEditPerson] = useState(false);
   const [resetImg, setResetImg] = useState(false);
 
@@ -43,11 +43,11 @@ const Person = () => {
           <>
             <ProfileImageContainer>
               <ProfileImage>
-                {teacher?.profilePhotoUrl?.name?.length > 0 ? (
+                {teacher?.imageUrl?.fullName?.length > 0 ? (
                   <>
                     {!resetImg ? (
                       <Image
-                        src={teacher?.profilePhotoUrl?.download}
+                        src={teacher?.imageUrl?.download}
                         onError={() => setResetImg(true)}
                       />
                     ) : (
@@ -78,13 +78,13 @@ const Person = () => {
                   </div>
                 )}
               </ProfileImage>
-              <PersonName>{teacher?.name}</PersonName>
+              <PersonName>{teacher?.fullName}</PersonName>
               <Position>{teacher?.position}</Position>
             </ProfileImageContainer>
             <InfoContainer>
               <Info>
                 <Title>Elmi dərəcəsi</Title>
-                <Subtitle>{teacher?.scientificDegree}</Subtitle>
+                <Subtitle>{teacher?.academicDegree}</Subtitle>
               </Info>
               <Info>
                 <Title>Tədqiqat sahəsi</Title>
@@ -92,7 +92,7 @@ const Person = () => {
               </Info>
               <Info>
                 <Title>E-poçt</Title>
-                <Subtitle>{teacher?.contact}</Subtitle>
+                <Subtitle>{teacher?.email}</Subtitle>
               </Info>
             </InfoContainer>
             <TbEdit

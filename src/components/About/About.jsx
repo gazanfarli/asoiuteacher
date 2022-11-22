@@ -5,16 +5,16 @@ import listArrValues from "../../Helpers/listArrValues";
 import { mobile } from "../../responsive";
 import { TbEdit } from "react-icons/tb";
 import { useRef, useState } from "react";
-import { updateTeacherData } from "../../features/Teacher";
+import { addDataAsync, updateTeacherData } from "../../features/Teacher";
 import alertify from "alertifyjs";
 import EducationEdit from "./EducationEdit";
 import SkillsEdit from "./SkillsEdit";
 import ExperienceEdit from "./ExperienceEdit";
 import Education from "./Education";
-import Experience from './Experience';
+import Experience from "./Experience";
 
 const About = () => {
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const [editEducation, setEditEducation] = useState(false);
   const [editSkills, setEditSkills] = useState(false);
   const [editExperience, setEditExperience] = useState(false);
@@ -69,6 +69,9 @@ const About = () => {
           date: edDate.current.value,
           specialty: specialty.current.value,
         });
+        dispatch(
+          addDataAsync({ data: data[data.length - 1], type: name }, "Education")
+        );
         alertify.success("Yeni təhsil əlavə olundu");
       }
     } else if (name === "experience") {
@@ -83,6 +86,12 @@ const About = () => {
           date: exDate.current.value,
           position: position.current.value,
         });
+        // dispatch(
+        //   addDataAsync(
+        //     { data: data[data.length - 1], type: name },
+        //     "Experience"
+        //   )
+        // );
         alertify.success("Yeni təcrübə əlavə olundu");
       }
     }
@@ -158,10 +167,10 @@ const About = () => {
         </EducationContainer>
       ) : (
         <Education
-        onClickHandler={onClickHandler}
-        set={setEditEducation}
-        tbEditIconStyle={tbEditIconStyle}
-        teacher={teacher}
+          onClickHandler={onClickHandler}
+          set={setEditEducation}
+          tbEditIconStyle={tbEditIconStyle}
+          teacher={teacher}
         />
       )}
       {/* SKILLS */}
@@ -289,7 +298,7 @@ export const InfoEdit = styled.span`
   line-height: 145%;
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   display: "flex";
   font-size: "1rem";
   padding: 5px 10px;

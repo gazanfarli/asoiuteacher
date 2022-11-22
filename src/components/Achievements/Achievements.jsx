@@ -18,7 +18,7 @@ import NewEducation from "./NewEducation";
 import NewCertificate from "./NewCertificate";
 
 const Achievements = () => {
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const dispatch = useDispatch();
   const [editEducation, setEditEducation] = useState(false);
   const [editCertificates, setEditCertificates] = useState(false);
@@ -623,7 +623,7 @@ export const iconStyle = {
   cursor: "pointer",
 };
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   display: "flex";
   font-size: "1rem";
   padding: 5px 10px;

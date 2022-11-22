@@ -77,7 +77,7 @@ const CertificatesEdit = ({
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <p style={{ width: "20rem", wordWrap: "break-word" }}>
+                    <p style={{ width: "80%", wordWrap: "break-word" }}>
                       {item.link}
                     </p>
                     <div>

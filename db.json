@@ -25,6 +25,13 @@
         "publishCountry": "Azərbaycan",
         "publishDate": "23.05.2005",
         "link": "https://www.figma.com/file/hy5ej9m9IjBmcHqWEtgdI1/ASO%C4%B0U-TEACHER?node-id=55%3A415"
+      },
+      {
+        "name": "elmi is",
+        "category": "Scopus 1",
+        "publishCountry": "Russian Federation",
+        "publishDate": "2022-11-02",
+        "link": "link"
       }
     ],
     "education": [
@@ -154,8 +161,26 @@
       "download": ""
     },
     "cvEndpoint": {
-      "name": "",
-      "download": ""
+      "name": "GazanfarGazanfarliCV.pdf4160ba93-7d0b-4f86-b5b7-0bb70bc15047",
+      "download": "https://firebasestorage.googleapis.com/v0/b/asoiuteacher.appspot.com/o/files%2FGazanfarGazanfarliCV.pdf4160ba93-7d0b-4f86-b5b7-0bb70bc15047?alt=media&token=fa8176cd-1c49-4d82-8ef3-9073e6a6418c"
     }
-  }
+  },
+  "education": [
+    {
+      "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+      "date": "1975-1981"
+    },
+    {
+      "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+      "date": "1975-1981"
+    },
+    {
+      "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+      "date": "1975-1981"
+    },
+    {
+      "specialty": "Azərbaycan Dövlət Neft və Sənaye Universiteti - Avtomatika və telemexanika, elektrik mühəndisi",
+      "date": "1975-1981"
+    }
+  ]
 }

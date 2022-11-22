@@ -7,7 +7,7 @@ import { mobile } from "../../responsive";
 import ScientificWorksEdit from "./ScientificWorksEdit";
 
 const ScientificWorks = () => {
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const [editWorks, setEditWorks] = useState(false);
 
   const onClickHandler = (set) => {

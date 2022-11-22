@@ -37,8 +37,8 @@ const EducationEdit = ({
         </Thead>
         <Tbody>
           {/* EDUCATION */}
-          {teacher?.achievements?.map((item, index) =>
-        index === editListId.index && editListId.name === "achievements" ? (
+          {teacher?.diploms?.map((item, index) =>
+        index === editListId.index && editListId.name === "diploms" ? (
           // WHEN EDIT ICON CLICKED  - ACHIEVEMENTS
           <Tr key={index}>
             <Td>
@@ -96,7 +96,7 @@ const EducationEdit = ({
                   style={iconStyle}
                 />
                 <FiCheckCircle
-                  onClick={() => saveInfo(index, "achievements")}
+                  onClick={() => saveInfo(index, "diploms")}
                   style={iconStyle}
                 />
               </div>
@@ -113,7 +113,7 @@ const EducationEdit = ({
                 {item.category}
                 <div>
                   <FiEdit
-                    onClick={() => setEditId(index, "achievements")}
+                    onClick={() => setEditId(index, "diploms")}
                     style={{
                       width: "1.2rem",
                       height: "1.2rem",
@@ -123,7 +123,7 @@ const EducationEdit = ({
                     }}
                   />
                   <RiDeleteBin6Line
-                    onClick={() => deleteInfo(index, "achievements")}
+                    onClick={() => deleteInfo(index, "diploms")}
                     style={{
                       width: "1.2rem",
                       height: "1.2rem",

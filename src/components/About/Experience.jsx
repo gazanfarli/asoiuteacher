@@ -11,7 +11,7 @@ const Experience = ({
   return (
     <ExperienceContainer>
           <Title>İş təcrübəsi</Title>
-          {teacher?.experience?.map((item, index) => (
+          {teacher?.workExperiences?.map((item, index) => (
             <Row key={index}>
               <Date>{item.date}</Date>
               <Info>{item.position}</Info>

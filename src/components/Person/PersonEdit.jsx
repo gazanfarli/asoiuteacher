@@ -22,7 +22,7 @@ const PersonEdit = ({
     set,
     onClickHandler
 }) => {
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const dispatch = useDispatch();
   const [resetImg, setResetImg] = useState(false);
 
@@ -48,10 +48,10 @@ const PersonEdit = ({
       if (imgEdit?.current !== null) imgEdit.current.src = fs.result;
     };
     // DELETE LAST IMAGE FROM FIREBASE
-    if (teacher?.profilePhotoUrl?.name?.length > 0) {
+    if (teacher?.imageUrl?.name?.length > 0) {
       const deleteRef = ref(
         storage,
-        `images/${teacher?.profilePhotoUrl?.name}`
+        `images/${teacher?.imageUrl?.name}`
       );
 
       // Delete the file
@@ -68,7 +68,7 @@ const PersonEdit = ({
         dispatch(
           updateTeacherData({
             data: { name: file.name + id, download: url },
-            type: "profilePhotoUrl",
+            type: "imageUrl",
           })
         );
         alertify.success('Profil şəkli dəyişdirildi');
@@ -85,11 +85,11 @@ const PersonEdit = ({
       <Wrapper>
         <ProfileImageContainer>
           <ProfileImage>
-            {teacher?.profilePhotoUrl?.name?.length > 0 ? (
+            {teacher?.imageUrl?.name?.length > 0 ? (
               <>
               {!resetImg ? (
                 <Image
-                  src={teacher?.profilePhotoUrl?.download}
+                  src={teacher?.imageUrl?.download}
                   onError={() => setResetImg(true)}
                 />
               ) : (
@@ -142,9 +142,9 @@ const PersonEdit = ({
           </ProfileImage>
           <PersonInfo>
             <Input
-              name="name"
+              name="fullName"
               type="text"
-              value={teacher?.name}
+              value={teacher?.fullName}
               onChange={(e) => handleChange(e)}
               placeholder='Ad və soyad'
               style={{ fontSize: "22px", marginBottom: "1rem" }}
@@ -172,9 +172,9 @@ const PersonEdit = ({
           <Info>
             <Title>Elmi dərəcəsi</Title>
             <Input
-              name="scientificDegree"
+              name="academicDegree"
               type="text"
-              value={teacher?.scientificDegree}
+              value={teacher?.academicDegree}
               onChange={(e) => handleChange(e)}
               style={inputStyle}
             />
@@ -192,9 +192,9 @@ const PersonEdit = ({
           <Info>
             <Title>E-poçt</Title>
             <Input
-              name="contact"
+              name="email"
               type="text"
-              value={teacher?.contact}
+              value={teacher?.email}
               onChange={(e) => handleChange(e)}
               style={inputStyle}
             />

@@ -19,8 +19,8 @@ const ExperienceEdit = ({
   return (
     <>
         {/* WHEN EDIT ICON CLICKED */}
-        {teacher?.experience?.map((item, index) =>
-          index === editListId.index && editListId.name === "experience" ? (
+        {teacher?.workExperiences?.map((item, index) =>
+          index === editListId.index && editListId.name === "workExperiences" ? (
             <RowEdit key={index}>
               <Input
                 name="date"
@@ -42,7 +42,7 @@ const ExperienceEdit = ({
               />
               <FiCheckCircle
                 style={iconStyle}
-                onClick={() => saveInfo(index, "experience")}
+                onClick={() => saveInfo(index, "workExperiences")}
               />
             </RowEdit>
           ) : (
@@ -51,7 +51,7 @@ const ExperienceEdit = ({
               <DateEdit>{item.date}</DateEdit>
               <InfoEdit>{item.position}</InfoEdit>
               <FiEdit
-                onClick={() => setEditId(index, "experience")}
+                onClick={() => setEditId(index, "workExperiences")}
                 style={{
                   width: "1.2rem",
                   height: "1.2rem",
@@ -60,7 +60,7 @@ const ExperienceEdit = ({
                 }}
               />
               <RiDeleteBin6Line
-                onClick={() => deleteInfo(index, "experience")}
+                onClick={() => deleteInfo(index, "workExperiences")}
                 style={{
                   width: "1.2rem",
                   height: "1.2rem",
@@ -97,7 +97,7 @@ const ExperienceEdit = ({
               style={iconStyle}
               onClick={() => {
                 addClickedExHandler();
-                addInfo("experience");
+                addInfo("workExperiences");
               }}
             />
           </RowEdit>

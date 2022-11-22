@@ -7,24 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 // import axios from "axios";
 // import { getTeacher } from "../features/Teacher";
 import { mobile } from "../responsive";
+// import { getTeacherAsync } from "../features/Teacher";
 
 const Home = () => {
   const [editMode, setEditMode] = useState(false);
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // axios
-    //   .get(apiUrl)
-    //   .then((res) => {
-    //     dispatch(getTeacher(res.data));
-    //   })
-    //   .catch((err) => console.error(err));
+    // dispatch(getTeacherAsync())
   }, [dispatch]);
 
   return (
     <>
-      {teacher?.name?.length > 0 && (
+      {teacher?.fullName?.length > 0 && (
         <Container>
           <Person editMode={editMode} setEditMode={setEditMode} />
           <Info editMode={editMode} setEditMode={setEditMode} />

@@ -16,7 +16,7 @@ import alertify from 'alertifyjs';
 const CV = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isFilePicked, setIsFilePicked] = useState(false);
-  const teacher = useSelector((state) => state.teacher.teacher);
+  const teacher = useSelector((state) => state.teacher);
   const dispatch = useDispatch();
 
   const changeHandler = (event) => {
